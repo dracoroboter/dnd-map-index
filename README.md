@@ -1,5 +1,9 @@
 # dnd-map-index
 
+> 🇬🇧 [English version (auto-translated)](README.en.md)
+
+**Versione**: 0.1.0 — 2026-05-02
+
 Indice ricercabile di battle map D&D 5e gratuite, con metadati strutturati (autore, licenza, tipo, tags).
 
 **Stato**: MVP — 650 mappe Dyson Logos indicizzate, 20 taggate, ricerca CLI funzionante.
