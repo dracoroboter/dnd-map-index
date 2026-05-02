@@ -124,8 +124,10 @@ pip install requests beautifulsoup4
 
 ## Related projects
 
-- **[dnd-maps](https://github.com/dracoroboter/dnd-maps)** — toolchain for generating and rendering D&D maps
-- **[dnd-generator](https://github.com/dracoroboter/dnd-generator)** — D&D adventures (uses maps indexed here)
+This project is part of a family of D&D 5e tools:
+
+- **[dnd-maps](https://github.com/dracoroboter/dnd-maps)** — toolchain for generating and rendering D&D maps (procedural generation, multi-style SVG renderers, DDL/RTL furnishing system)
+- **[dnd-generator](https://github.com/dracoroboter/dnd-generator)** — homebrew D&D 5e adventures (uses maps indexed here as visual reference)
 
 ## License
 
@@ -137,4 +139,6 @@ pip install requests beautifulsoup4
 
 ## Author
 
-**dracoroboter** — `dracoroboter(at)gmail.com`
+**dracoroboter**
+
+I've been "dracoroboter" online since the late '90s. I'm a programmer by trade, started DMing in 2024, so I'm still very much a noob. You can reach me at dracoroboter(at)gmail.com.

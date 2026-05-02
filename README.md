@@ -122,8 +122,10 @@ pip install requests beautifulsoup4
 
 ## Progetti correlati
 
-- **[dnd-maps](https://github.com/dracoroboter/dnd-maps)** — toolchain per generare e renderizzare mappe D&D
-- **[dnd-generator](https://github.com/dracoroboter/dnd-generator)** — avventure D&D (usa le mappe indicizzate qui)
+Questo progetto fa parte di una famiglia di tool per D&D 5e:
+
+- **[dnd-maps](https://github.com/dracoroboter/dnd-maps)** — toolchain per generare e renderizzare mappe D&D (generazione procedurale, renderer SVG multi-stile, sistema di arredamento DDL/RTL)
+- **[dnd-generator](https://github.com/dracoroboter/dnd-generator)** — avventure D&D 5e homebrew (usa le mappe indicizzate qui come riferimento visivo)
 
 ## Licenza
 
@@ -135,4 +137,6 @@ pip install requests beautifulsoup4
 
 ## Autore
 
-**dracoroboter** — `dracoroboter(at)gmail.com`
+**dracoroboter**
+
+Sono "dracoroboter" in rete dalla fine degli anni '90 del secolo scorso. Faccio il programmatore di lavoro, ho iniziato a fare il master nel 2024 e quindi sono ancora un niubbo. Se volete contattarmi potete usare la mail dracoroboter(at)gmail.com.
