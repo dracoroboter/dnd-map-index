@@ -1,0 +1,956 @@
+[
+  {
+    "id": "forgotten-adventures-feywild-throne",
+    "title": "Feywild Throne",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/feywild-throne-24x30/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2026/01/FeywildThrone_Small_Post_Banner_Upscaled-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-yuletide-abode",
+    "title": "Yuletide Abode",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/yuletide-abode-38x29/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2025/12/YuletideAbode_Small_Post_Banner_Upscaled-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-9",
+    "title": "Phandelver Encounters – Pack 9",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-9/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2025/07/PhandelverEncounters9_Split_Small_Post-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-8",
+    "title": "Phandelver Encounters – Pack 8",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-8/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2025/06/PhandelverEncounters8_Small_Post-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-7",
+    "title": "Phandelver Encounters – Pack 7",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-7/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2025/04/PhandelverEncounters7_Small_Post-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-6",
+    "title": "Phandelver Encounters – Pack 6",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-6/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2025/02/Phandelver_Small_Post-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-briny-maze",
+    "title": "Briny Maze",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/briny-maze-66x80/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2025/01/BrinyMaze_Small_Post_Banner_Upscaled-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "maze"
+    ],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-flesh-encounters-pack-1",
+    "title": "Flesh Encounters – Pack 1",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/flesh-encounters-pack-1/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/12/FleshEncounters_Small_Post-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-spawn-hollow",
+    "title": "Spawn Hollow",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/spawn-hollow-33x25/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/11/Spawnhollow_Roll20_Post_ALT-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-5",
+    "title": "Phandelver Encounters – Pack 5",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-5/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/10/PhandelverEncounters5_Small_Post-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-illithinoch",
+    "title": "Illithinoch",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/illithinoch-33x43/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/09/Illithinoch_Ceremonth_Small_Post_Banner_Upscaled-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-lanky-street",
+    "title": "Lanky Street",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/lanky-street-54x16/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/08/LankyStreet_Small_Post_Banner_Upscaled-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-shattered-sky-temple",
+    "title": "Shattered Sky Temple",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/shattered-sky-temple-23x33/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/07/ShatteredSkyTemple_Small_Post_Banner_Upscaled-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "religious",
+      "temple"
+    ],
+    "environment": "temple",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-4",
+    "title": "Phandelver Encounters – Pack 4",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-4/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/06/PhandelverEncounters4_Small_Post-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-3",
+    "title": "Phandelver Encounters – Pack 3",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-3/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/04/PhandelverEncounters3_Small_Post-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-gibbet-crossing",
+    "title": "Gibbet Crossing",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/gibbet-crossing-68x91/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/04/GibbetCrossing_Small_Post_Banner-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-crypt-of-the-talhund",
+    "title": "Crypt of the Talhund",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/crypt-of-the-talhund-44x33/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2024/02/CryptoftheTalhund_Small_Post_Banner-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "crypt",
+      "undead"
+    ],
+    "environment": "crypt",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-yuletide-lodge",
+    "title": "Yuletide Lodge",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/yuletide-lodge-27x35/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/12/YuletideLodge_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-talhundereth",
+    "title": "Talhundereth",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/talhundereth-35x44/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/12/Talhundereth_Small_Post_Banner-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-zorzula-s-rest",
+    "title": "Zorzula’s Rest",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/zorzulas-rest/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/11/ZorzulaRest_Split_Small_Post-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-2",
+    "title": "Phandelver Encounters – Pack 2",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-2/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/10/PhandelverEncounters2_Small_Post-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-phandelver-encounters-pack-1",
+    "title": "Phandelver Encounters – Pack 1",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/phandelver-encounters-pack-1/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/09/Phandelver_Small_Post_Banner-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-mountain-temple",
+    "title": "Mountain Temple",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/mountain-temple-35x47/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/07/mountaintemple_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "mountain",
+      "religious",
+      "temple"
+    ],
+    "environment": "temple",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-warehouse-site-left",
+    "title": "Warehouse Site Left",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/warehouse-site-left-27x26/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/07/Warehouse-Site-Left_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-the-sawmill",
+    "title": "The Sawmill",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/the-sawmill-30x40/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/05/TheSawmill_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-the-toilet-map",
+    "title": "The Toilet Map",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/the-toilet-map-24x25/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/04/TheToiletMap_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-infinite-swamp",
+    "title": "Infinite Swamp",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/infinite-swamp-50x50/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/03/InfiniteSwamp_Small_Post_Banner-copy-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "natural",
+      "swamp"
+    ],
+    "environment": "swamp",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-the-gully",
+    "title": "The Gully",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/the-gully-22x16/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/02/TheGully_Small_Post_Banner_Alternate-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-rocky-river",
+    "title": "Rocky River",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/rocky-river-40x30/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2023/01/RockyRiver_Small_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "river",
+      "water"
+    ],
+    "environment": "river",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-wave-echo-cave",
+    "title": "Wave Echo Cave",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/wave-echo-cave-73x90/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/12/WacEchoFull_SmallBanner-280x280.jpg",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "cave",
+      "natural"
+    ],
+    "environment": "cave",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-ordinary-dungeon-hall",
+    "title": "Ordinary Dungeon Hall",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/ordinary-dungeon-hall-14x20/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/11/OrdinaryDungeonHall_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "dungeon"
+    ],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-forest-glade",
+    "title": "Forest Glade",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/forest-glade-32x31/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/11/ForestGlade_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "forest",
+      "natural"
+    ],
+    "environment": "forest",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-highlands-ruins",
+    "title": "Highlands Ruins",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/highlands-ruins-40x32/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/10/HighlandRuin_SmallPost-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "ruins"
+    ],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-forest-road",
+    "title": "Forest Road",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/forest-road-30x20/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/09/ForestRoad_Small_Post_Banner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "forest",
+      "natural",
+      "road"
+    ],
+    "environment": "forest",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-ruins-of-thundertree",
+    "title": "Ruins of Thundertree",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/ruins-of-thundertree-58x38/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/09/Thundertree_SmallBanner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "ruins"
+    ],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-forest-trail",
+    "title": "Forest Trail",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/forest-trail-26x34/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/08/ForestTrail_SmallBanner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "forest",
+      "natural"
+    ],
+    "environment": "forest",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-jungle-rope-bridge",
+    "title": "Jungle Rope Bridge",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/jungle-rope-bridge-31x20/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/08/JungleRopeBridge_SmallBanner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "bridge"
+    ],
+    "environment": "road",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-swamp-ruins",
+    "title": "Swamp Ruins",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/swamp-ruins-32x22/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/07/SwampRuins_SmallBanner-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "natural",
+      "ruins",
+      "swamp"
+    ],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-cragmaw-castle",
+    "title": "Cragmaw Castle",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/cragmaw-castle-31x22/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/07/CragmawCastle_Small-Banner-1-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "castle",
+      "fortification"
+    ],
+    "environment": "castle",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-redbrand-hideout",
+    "title": "Redbrand Hideout",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/redbrand-hideout-30x20/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/06/RedbrandHideout_Banner_Small-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-gloomy-swamp",
+    "title": "Gloomy Swamp",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/gloomy-swamp-25x25/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/05/GloomySwamp-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "natural",
+      "swamp"
+    ],
+    "environment": "swamp",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-cragmaw-hideout",
+    "title": "Cragmaw Hideout",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/cragmaw-hideout-30x20/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/05/CragmawHideout-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [],
+    "environment": "dungeon",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  },
+  {
+    "id": "forgotten-adventures-mountain-pass",
+    "title": "Mountain Pass",
+    "author": "Forgotten Adventures",
+    "source_url": "https://www.forgotten-adventures.net/product/battlemaps/mountain-pass-24x39/",
+    "image_url": "",
+    "thumbnail_url": "https://www.forgotten-adventures.net/wp-content/uploads/2022/05/MountainPass-280x280.png",
+    "license": {
+      "type": "personal-free",
+      "name": "Forgotten Adventures Free License",
+      "attribution": "Map by Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net"
+    },
+    "tags": [
+      "mountain"
+    ],
+    "environment": "mountain",
+    "map_type": "battlemap",
+    "style": "color-digital",
+    "format": "png",
+    "status": "new",
+    "date_indexed": "2026-05-03"
+  }
+]

@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-03T00:44:20",
-  "total_maps": 2146,
+  "generated": "2026-05-03T00:47:21",
+  "total_maps": 2189,
   "files": [
     {
       "file": "2minute-tabletop.json",
@@ -18,6 +18,12 @@
       "file": "dyson-logos.json",
       "source_id": "dyson-logos",
       "count": 650,
+      "last_updated": "2026-05-03"
+    },
+    {
+      "file": "forgotten-adventures.json",
+      "source_id": "forgotten-adventures",
+      "count": 43,
       "last_updated": "2026-05-03"
     },
     {

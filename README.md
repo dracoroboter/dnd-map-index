@@ -6,13 +6,13 @@
 
 Indice ricercabile di battle map D&D 5e gratuite, con metadati strutturati (autore, licenza, tipo, tags).
 
-**Stato**: 1869 mappe indicizzate da 5 fonti (Dyson Logos + 2-Minute Tabletop + Tom Cartos + Seafoot Games + Dice Grimorium), ricerca CLI e webapp funzionanti.
+**Stato**: 2189 mappe indicizzate da 7 fonti (Dyson Logos + 2-Minute Tabletop + Tom Cartos + Seafoot Games + Dice Grimorium + Reddit r/battlemaps + Forgotten Adventures), ricerca CLI e webapp funzionanti.
 
 ---
 
 ## Cosa fa
 
-Indicizza mappe da fonti esterne e permette di cercarle per ambiente, tag, licenza, testo libero. Le immagini non sono nel repo — solo metadati JSON e link alle fonti originali. Download on-demand delle singole mappe in una directory locale.
+Indicizza mappe da fonti esterne e permette di cercarle per ambiente, tag, licenza, testo libero. Le immagini non sono nel repo — solo metadati JSON e link alle fonti originali.
 
 ## Cosa NON fa
 
@@ -22,7 +22,7 @@ Non è un servizio completo. È un tool personale con scope limitato. Se cerchi 
 
 | | Lost Atlas | dnd-map-index |
 |-|------------|---------------|
-| Mappe | 5000+ | ~1869 (5 fonti) |
+| Mappe | 5000+ | ~2189 (7 fonti) |
 | Filtro licenza | ❌ | ✅ |
 | Open source | ❌ | ✅ GPL2 |
 | Offline | ❌ | ✅ |
@@ -107,7 +107,9 @@ dnd-map-index/
 │   ├── 2minute-tabletop.json # 359 mappe
 │   ├── tom-cartos.json    # 289 mappe
 │   ├── seafoot-games.json # 210 mappe
-│   └── dice-grimorium.json # 361 mappe
+│   ├── dice-grimorium.json # 361 mappe
+│   ├── reddit-curated.json # ~277 mappe (experimental)
+│   └── forgotten-adventures.json # 43 mappe
 ├── index.html              # webapp (GitHub Pages)
 ├── sources.json            # configurazione fonti (licenze, policy)
 ├── scripts/
@@ -117,12 +119,15 @@ dnd-map-index/
 │   ├── grab-tomcartos.py   # plugin scraper Tom Cartos
 │   ├── grab-seafoot.py    # plugin scraper Seafoot Games
 │   ├── grab-dicegrimorium.py # plugin scraper Dice Grimorium
+│   ├── grab-reddit.py     # plugin scraper Reddit r/battlemaps (experimental)
+│   ├── grab-forgottenadv.py # plugin scraper Forgotten Adventures
 │   ├── search.py           # ricerca CLI
 │   ├── tag-assist.py       # tagger interattivo
 │   └── rescan.py           # manutenzione (autotag, colore, URL check)
 ├── tests/
 │   └── test_all.py         # test di non regressione
 ├── docs/                   # documentazione (italiano, traduzioni inglesi)
+│   └── reddit-api-setup.md # setup API Reddit autenticata
 └── .gitignore
 ```
 
@@ -140,9 +145,17 @@ Ogni fonte ha uno script `grab-<source>.py` che importa da `grab_core.py` le fun
 | **Seafoot Games** | ~210 | personal-free | ✅ active |
 | **Dice Grimorium** | ~361 | personal-free | ✅ active |
 | Reddit r/battlemaps | ~277 | all-rights-reserved (per-post) | 🧪 experimental |
-| Forgotten Adventures | ~50 | personal-free | backlog |
+| Forgotten Adventures | ~43 | personal-free | ✅ active |
 
 Ogni fonte è configurata in `sources.json` con policy per thumbnail, download e metodo di indicizzazione. Aggiungere una fonte = aggiungere un record + (opzionalmente) uno script.
+
+### Policy
+
+Le regole di indicizzazione sono documentate in `sources.json` → sezione `policy`:
+- **Nessun download di immagini** — solo metadati (titolo, autore, URL, licenza)
+- **Thumbnail** — solo link a URL già pubblicamente serviti dalla fonte
+- **Licenza non chiara → all-rights-reserved** (assunzione conservativa)
+- **Link alla fonte originale** — l'utente scarica direttamente dalla fonte
 
 ## Prossimi passi
 
@@ -153,7 +166,7 @@ Ogni fonte è configurata in `sources.json` con policy per thumbnail, download e
   - [x] ~~Scraper sperimentale API pubblica (~277 mappe, `grab-reddit.py`)~~
   - [ ] Registrare app Reddit API per accesso autenticato (vedi `docs/reddit-api-setup.md`)
   - [ ] Aggiornare `grab-reddit.py` con paginazione completa (~5000-10000 mappe)
-- [ ] Attivare **Forgotten Adventures** (~50 mappe) — `grab-forgottenadv.py`
+- [x] ~~Attivare **Forgotten Adventures** (~43 mappe) — `grab-forgottenadv.py`~~
 - [ ] Completare rescan colore B&W/color su tutte le fonti
 - [ ] Ricerca semantica (futura)
 - [ ] Integrazione con progetto `dungeonandragon` (futura)
