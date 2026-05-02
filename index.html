@@ -24,18 +24,27 @@ header h1 { display: inline; font-size: 1.5rem; color: #5a3e1b; vertical-align: 
 
 .stats { text-align: center; color: #888; font-size: .85rem; margin-bottom: 1rem; }
 
-.results { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .8rem; }
-.card { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: .8rem; transition: border-color .2s; }
+.results { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .8rem; }
+.card { background: #fff; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; transition: border-color .2s; }
 .card:hover { border-color: #c4a35a; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-.card h3 { font-size: .95rem; color: #5a3e1b; margin-bottom: .4rem; }
+.card .thumb { width: 100%; height: 160px; object-fit: cover; background: #e8e4dc; display: block; }
+.card .body { padding: .6rem .8rem; }
+.card h3 { font-size: .9rem; color: #5a3e1b; margin-bottom: .3rem; }
 .card h3 a { color: inherit; text-decoration: none; }
 .card h3 a:hover { text-decoration: underline; }
-.meta { font-size: .8rem; color: #777; line-height: 1.6; }
-.tag { display: inline-block; background: #e8eef5; color: #4a6a8a; padding: .1rem .4rem; border-radius: 3px; font-size: .75rem; margin: .1rem; }
+.meta { font-size: .78rem; color: #777; line-height: 1.5; }
+.tag { display: inline-block; background: #e8eef5; color: #4a6a8a; padding: .1rem .35rem; border-radius: 3px; font-size: .7rem; margin: .1rem; }
 .tag.env { background: #e5f0e5; color: #3a6a3a; }
-.license { font-size: .75rem; }
+.license { font-size: .72rem; }
 .license.free { color: #3a8a3a; }
 .license.unknown { color: #c44; }
+
+.pager { text-align: center; margin: 1.5rem 0; }
+.pager button { background: #5a3e1b; color: #fff; border: none; border-radius: 4px; padding: .5rem 1.2rem; font-size: .9rem; cursor: pointer; margin: 0 .3rem; }
+.pager button:hover { background: #7a5a2b; }
+.pager button:disabled { background: #ccc; cursor: default; }
+.pager span { font-size: .85rem; color: #888; margin: 0 .5rem; }
+
 .empty { text-align: center; color: #999; padding: 2rem; }
 
 footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: .8rem; color: #999; text-align: center; line-height: 1.6; }
@@ -60,24 +69,22 @@ footer a { color: #6a7fa8; }
   All maps remain property of their respective authors.
   <br>
   Full documentation: <a href="https://github.com/dracoroboter/dnd-map-index#readme">README</a>.
+  Copyright concerns? Contact <strong>dracoroboter(at)gmail.com</strong> — issues will be addressed as soon as possible.
 </div>
 
 <div class="filters">
-  <input type="text" id="text" placeholder="Search title or tags..." oninput="search()">
-  <select id="env" onchange="search()"><option value="">All environments</option></select>
-  <select id="license" onchange="search()">
+  <input type="text" id="text" placeholder="Search title or tags..." oninput="onFilter()">
+  <select id="env" onchange="onFilter()"><option value="">All environments</option></select>
+  <select id="license" onchange="onFilter()">
     <option value="">All licenses</option>
     <option value="free">🟢 Free</option>
     <option value="unknown">🔴 Unknown</option>
-  </select>
-  <select id="status" onchange="search()">
-    <option value="">All maps</option>
-    <option value="ok">Tagged only</option>
   </select>
 </div>
 
 <div class="stats" id="stats"></div>
 <div class="results" id="results"></div>
+<div class="pager" id="pager"></div>
 
 <footer>
   <strong>dnd-map-index</strong> by <a href="https://github.com/dracoroboter">dracoroboter</a>
@@ -91,7 +98,8 @@ footer a { color: #6a7fa8; }
 </footer>
 
 <script>
-let ALL = [];
+const PAGE_SIZE = 24;
+let ALL = [], filtered = [], page = 0;
 
 async function load() {
   const r = await fetch('index/dyson-logos.json');
@@ -99,39 +107,63 @@ async function load() {
   const envs = [...new Set(ALL.map(m => m.environment).filter(Boolean))].sort();
   const sel = document.getElementById('env');
   envs.forEach(e => { const o = document.createElement('option'); o.value = e; o.textContent = e; sel.appendChild(o); });
-  search();
+  onFilter();
 }
 
-function search() {
+function onFilter() { page = 0; applyFilter(); }
+
+function applyFilter() {
   const text = document.getElementById('text').value.toLowerCase();
   const env = document.getElementById('env').value;
   const lic = document.getElementById('license').value;
-  const status = document.getElementById('status').value;
 
-  let maps = ALL;
-  if (text) maps = maps.filter(m => m.title.toLowerCase().includes(text) || (m.tags||[]).some(t => t.includes(text)));
-  if (env) maps = maps.filter(m => m.environment === env);
-  if (lic === 'free') maps = maps.filter(m => m.license?.type !== 'unknown');
-  if (lic === 'unknown') maps = maps.filter(m => m.license?.type === 'unknown');
-  if (status === 'ok') maps = maps.filter(m => m.status === 'ok');
+  filtered = ALL;
+  if (text) filtered = filtered.filter(m => m.title.toLowerCase().includes(text) || (m.tags||[]).some(t => t.includes(text)));
+  if (env) filtered = filtered.filter(m => m.environment === env);
+  if (lic === 'free') filtered = filtered.filter(m => m.license?.type !== 'unknown');
+  if (lic === 'unknown') filtered = filtered.filter(m => m.license?.type === 'unknown');
 
-  document.getElementById('stats').textContent = maps.length + ' maps found (' + ALL.length + ' total in index)';
+  render();
+}
+
+function render() {
+  const total = filtered.length;
+  const pages = Math.ceil(total / PAGE_SIZE);
+  const start = page * PAGE_SIZE;
+  const slice = filtered.slice(start, start + PAGE_SIZE);
+
+  document.getElementById('stats').textContent = total + ' maps found — page ' + (page+1) + ' of ' + Math.max(pages,1);
 
   const el = document.getElementById('results');
-  if (!maps.length) { el.innerHTML = '<div class="empty">No maps found.</div>'; return; }
+  if (!slice.length) { el.innerHTML = '<div class="empty">No maps found.</div>'; document.getElementById('pager').innerHTML = ''; return; }
 
-  el.innerHTML = maps.slice(0, 60).map(m => {
+  el.innerHTML = slice.map(m => {
     const tags = (m.tags||[]).map(t => '<span class="tag">' + t + '</span>').join('');
     const envTag = m.environment ? '<span class="tag env">' + m.environment + '</span>' : '';
     const licType = m.license?.type || 'unknown';
     const licClass = licType === 'unknown' ? 'unknown' : 'free';
     const licLabel = licType === 'unknown' ? '🔴 unknown' : '🟢 ' + licType;
+    const thumb = m.thumbnail_url
+      ? '<img class="thumb" loading="lazy" src="' + m.thumbnail_url + '" alt="' + m.title.replace(/"/g,'&quot;') + '">'
+      : '<div class="thumb" style="display:flex;align-items:center;justify-content:center;color:#bbb;font-size:.8rem;">No preview</div>';
     return '<div class="card">' +
+      '<a href="' + m.source_url + '" target="_blank" rel="noopener">' + thumb + '</a>' +
+      '<div class="body">' +
       '<h3><a href="' + m.source_url + '" target="_blank" rel="noopener">' + m.title + '</a></h3>' +
       '<div class="meta">' + envTag + ' ' + tags +
       '<br><span class="license ' + licClass + '">' + licLabel + '</span> — ' + m.author +
-      '</div></div>';
+      '</div></div></div>';
   }).join('');
+
+  // pager
+  const pg = document.getElementById('pager');
+  if (pages <= 1) { pg.innerHTML = ''; return; }
+  pg.innerHTML =
+    '<button ' + (page===0?'disabled':'') + ' onclick="page=0;render();window.scrollTo(0,0)">⟨⟨</button>' +
+    '<button ' + (page===0?'disabled':'') + ' onclick="page--;render();window.scrollTo(0,0)">⟨ Prev</button>' +
+    '<span>' + (page+1) + ' / ' + pages + '</span>' +
+    '<button ' + (page>=pages-1?'disabled':'') + ' onclick="page++;render();window.scrollTo(0,0)">Next ⟩</button>' +
+    '<button ' + (page>=pages-1?'disabled':'') + ' onclick="page='+( pages-1)+';render();window.scrollTo(0,0)">⟩⟩</button>';
 }
 
 load();
