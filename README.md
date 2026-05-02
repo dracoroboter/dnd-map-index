@@ -6,7 +6,7 @@
 
 Indice ricercabile di battle map D&D 5e gratuite, con metadati strutturati (autore, licenza, tipo, tags).
 
-**Stato**: 1298 mappe indicizzate da 3 fonti (Dyson Logos + 2-Minute Tabletop + Tom Cartos), ricerca CLI e webapp funzionanti.
+**Stato**: 1508 mappe indicizzate da 4 fonti (Dyson Logos + 2-Minute Tabletop + Tom Cartos + Seafoot Games), ricerca CLI e webapp funzionanti.
 
 ---
 
@@ -22,7 +22,7 @@ Non è un servizio completo. È un tool personale con scope limitato. Se cerchi 
 
 | | Lost Atlas | dnd-map-index |
 |-|------------|---------------|
-| Mappe | 5000+ | ~1298 (3 fonti) |
+| Mappe | 5000+ | ~1508 (4 fonti) |
 | Filtro licenza | ❌ | ✅ |
 | Open source | ❌ | ✅ GPL2 |
 | Offline | ❌ | ✅ |
@@ -84,6 +84,7 @@ python3 scripts/tag-assist.py --pick 20 --diverse
 python3 scripts/grab-dyson.py
 python3 scripts/grab-2minute.py
 python3 scripts/grab-tomcartos.py
+python3 scripts/grab-seafoot.py
 
 # Auto-taggare mappe senza tag
 python3 scripts/rescan.py --autotag
@@ -103,7 +104,8 @@ dnd-map-index/
 │   ├── manifest.json       # lista file, conteggi, data aggiornamento
 │   ├── dyson-logos.json    # 650 mappe
 │   ├── 2minute-tabletop.json # 359 mappe
-│   └── tom-cartos.json    # 289 mappe
+│   ├── tom-cartos.json    # 289 mappe
+│   └── seafoot-games.json # 210 mappe
 ├── index.html              # webapp (GitHub Pages)
 ├── sources.json            # configurazione fonti (licenze, policy)
 ├── scripts/
@@ -111,6 +113,7 @@ dnd-map-index/
 │   ├── grab-dyson.py       # plugin scraper Dyson Logos
 │   ├── grab-2minute.py     # plugin scraper 2-Minute Tabletop
 │   ├── grab-tomcartos.py   # plugin scraper Tom Cartos
+│   ├── grab-seafoot.py    # plugin scraper Seafoot Games
 │   ├── search.py           # ricerca CLI
 │   ├── tag-assist.py       # tagger interattivo
 │   └── rescan.py           # manutenzione (autotag, colore, URL check)
@@ -131,7 +134,7 @@ Ogni fonte ha uno script `grab-<source>.py` che importa da `grab_core.py` le fun
 | **Dyson Logos** | ~650 | commercial-free (attribution) | ✅ active |
 | **2-Minute Tabletop** | ~359 | CC BY-NC 4.0 | ✅ active |
 | **Tom Cartos** | ~289 | TOM license (attribution, no edit) | ✅ active |
-| Seafoot Games | ~200 | personal-free | backlog |
+| **Seafoot Games** | ~210 | personal-free | ✅ active |
 | Dice Grimorium | ~100 | da verificare | backlog |
 | Reddit r/battlemaps | variabile | variabile | backlog |
 | Forgotten Adventures | ~50 | personal-free | backlog |
@@ -141,7 +144,7 @@ Ogni fonte è configurata in `sources.json` con policy per thumbnail, download e
 ## Prossimi passi
 
 - [x] ~~Attivare **Tom Cartos** (~289 mappe, TOM license) — `grab-tomcartos.py`~~
-- [ ] Attivare **Seafoot Games** (~200 mappe, personal-free) — `grab-seafoot.py`
+- [x] ~~Attivare **Seafoot Games** (~210 mappe, personal-free) — `grab-seafoot.py`~~
 - [ ] Attivare **Dice Grimorium** (~100 mappe, licenza da verificare) — `grab-dicegrimorium.py`
 - [ ] Curazione manuale **Reddit r/battlemaps** — selezione post con licenza chiara
 - [ ] Attivare **Forgotten Adventures** (~50 mappe) — `grab-forgottenadv.py`

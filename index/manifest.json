@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-03T00:14:28",
-  "total_maps": 1298,
+  "generated": "2026-05-03T00:21:12",
+  "total_maps": 1508,
   "files": [
     {
       "file": "2minute-tabletop.json",
@@ -12,6 +12,12 @@
       "file": "dyson-logos.json",
       "source_id": "dyson-logos",
       "count": 650,
+      "last_updated": "2026-05-03"
+    },
+    {
+      "file": "seafoot-games.json",
+      "source_id": "seafoot-games",
+      "count": 210,
       "last_updated": "2026-05-03"
     },
     {
