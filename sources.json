@@ -1,0 +1,124 @@
+{
+  "sources": [
+    {
+      "id": "dyson-logos",
+      "name": "Dyson Logos",
+      "url": "https://dysonlogos.blog",
+      "index_url": "https://dysonlogos.blog/maps/commercial-maps/",
+      "status": "active",
+      "license": {
+        "type": "commercial-free",
+        "name": "Dyson Logos Commercial License",
+        "attribution": "Cartography by Dyson Logos",
+        "url": "https://dysonlogos.blog/maps/commercial-maps/"
+      },
+      "thumbnail_policy": "local",
+      "download_policy": "direct",
+      "indexing_method": "scraper",
+      "style": "bw-ink",
+      "format": "png"
+    },
+    {
+      "id": "tom-cartos",
+      "name": "Tom Cartos",
+      "url": "https://www.tomcartos.com",
+      "status": "planned",
+      "license": {
+        "type": "tom-open",
+        "name": "Tom's Open Map License",
+        "attribution": "Cartography by Tom Cartos",
+        "url": "https://www.tomcartos.com/toms-open-map-license"
+      },
+      "thumbnail_policy": "remote",
+      "download_policy": "link_to_source",
+      "indexing_method": "manual_assisted",
+      "style": "color-digital",
+      "format": "jpg"
+    },
+    {
+      "id": "2minute-tabletop",
+      "name": "2-Minute Tabletop",
+      "url": "https://2minutetabletop.com",
+      "status": "planned",
+      "license": {
+        "type": "cc-by-nc",
+        "name": "CC BY-NC 4.0",
+        "attribution": "Map by 2-Minute Tabletop",
+        "url": "https://2minutetabletop.com/faq/license-and-attribution/"
+      },
+      "thumbnail_policy": "remote",
+      "download_policy": "link_to_source",
+      "indexing_method": "manual_assisted",
+      "style": "color-painted",
+      "format": "jpg"
+    },
+    {
+      "id": "seafoot-games",
+      "name": "Seafoot Games",
+      "url": "https://www.seafootgames.com",
+      "status": "backlog",
+      "license": {
+        "type": "personal-free",
+        "name": "Seafoot Games Free License",
+        "attribution": "Map by Seafoot Games",
+        "url": "https://www.seafootgames.com"
+      },
+      "thumbnail_policy": "remote",
+      "download_policy": "link_to_source",
+      "indexing_method": "manual_assisted",
+      "style": "color-digital",
+      "format": "jpg"
+    },
+    {
+      "id": "dice-grimorium",
+      "name": "Dice Grimorium",
+      "url": "https://www.dicegrimorium.com",
+      "status": "backlog",
+      "license": {
+        "type": "unknown",
+        "name": "Unknown - to verify",
+        "attribution": "Map by Dice Grimorium",
+        "url": "https://www.dicegrimorium.com"
+      },
+      "thumbnail_policy": "remote",
+      "download_policy": "link_to_source",
+      "indexing_method": "manual_assisted",
+      "style": "color-painted",
+      "format": "jpg"
+    },
+    {
+      "id": "reddit-curated",
+      "name": "Reddit r/battlemaps (curated)",
+      "url": "https://www.reddit.com/r/battlemaps",
+      "status": "backlog",
+      "license": {
+        "type": "unknown",
+        "name": "Varies per post",
+        "attribution": "See individual posts",
+        "url": "https://www.reddit.com/r/battlemaps"
+      },
+      "thumbnail_policy": "remote",
+      "download_policy": "link_to_source",
+      "indexing_method": "manual_assisted",
+      "style": "mixed",
+      "format": "mixed"
+    },
+    {
+      "id": "forgotten-adventures",
+      "name": "Forgotten Adventures",
+      "url": "https://www.forgotten-adventures.net",
+      "status": "backlog",
+      "license": {
+        "type": "personal-free",
+        "name": "Forgotten Adventures Free License",
+        "attribution": "Map by Forgotten Adventures",
+        "url": "https://www.forgotten-adventures.net"
+      },
+      "thumbnail_policy": "remote",
+      "download_policy": "link_to_source",
+      "indexing_method": "manual_assisted",
+      "style": "color-digital",
+      "format": "png"
+    }
+  ]
+}

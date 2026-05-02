@@ -1,0 +1,9 @@
+# Downloaded full-size maps (kept locally, never committed)
+maps/
+
+# Python
+__pycache__/
+*.pyc
+
+# Scraping cache
+.cache/
