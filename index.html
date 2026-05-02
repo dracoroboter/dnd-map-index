@@ -18,6 +18,18 @@ header h1 { display: inline; font-size: 1.5rem; color: #5a3e1b; vertical-align: 
 .about strong { color: #5a3e1b; }
 .about a { color: #6a7fa8; }
 
+.infobar { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; font-size: .85rem; color: #5a3e1b; font-weight: bold; }
+.infobar span { background: #ede7d9; padding: .3rem .8rem; border-radius: 4px; }
+
+details.sources { background: #ede7d9; border: 1px solid #d4c9b0; border-radius: 6px; padding: .5rem 1rem; margin-bottom: 1rem; font-size: .82rem; color: #555; }
+details.sources summary { cursor: pointer; font-weight: bold; color: #5a3e1b; }
+details.sources table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
+details.sources th, details.sources td { text-align: left; padding: .3rem .5rem; border-bottom: 1px solid #d4c9b0; }
+details.sources th { color: #5a3e1b; }
+details.sources .status-active { color: #3a8a3a; }
+details.sources .status-planned { color: #b8860b; }
+details.sources .status-backlog { color: #999; }
+
 .filters { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 1rem; }
 .filters select, .filters input { background: #fff; color: #333; border: 1px solid #ccc; border-radius: 4px; padding: .4rem .6rem; font-size: .9rem; }
 .filters input { width: 220px; }
@@ -70,11 +82,21 @@ footer a { color: #6a7fa8; }
   <br>
   Full documentation: <a href="https://github.com/dracoroboter/dnd-map-index#readme">README</a>.
   Copyright concerns? Contact <strong>dracoroboter(at)gmail.com</strong> — issues will be addressed as soon as possible.
+  <br>
+  <em>The author is a native Italian speaker. He can read English reasonably well, but his written English is... a work in progress. Please bear with him.</em>
 </div>
+
+<div class="infobar" id="infobar"></div>
+
+<details class="sources">
+  <summary>📋 Sources &amp; licenses</summary>
+  <table id="sources-table"><tbody></tbody></table>
+</details>
 
 <div class="filters">
   <input type="text" id="text" placeholder="Search title or tags..." oninput="onFilter()">
   <select id="env" onchange="onFilter()"><option value="">All environments</option></select>
+  <select id="author" onchange="onFilter()"><option value="">All sources</option></select>
   <select id="license" onchange="onFilter()">
     <option value="">All licenses</option>
     <option value="free">🟢 Free</option>
@@ -107,11 +129,49 @@ const PAGE_SIZE = 24;
 let ALL = [], filtered = [], page = 0;
 
 async function load() {
-  const r = await fetch('index/dyson-logos.json');
-  ALL = (await r.json()).filter(m => m.status !== 'removed');
+  // Load manifest to discover all index files
+  const manifestResp = await fetch('index/manifest.json');
+  const manifest = await manifestResp.json();
+
+  // Load all index files in parallel
+  const filePromises = manifest.files.map(f => fetch('index/' + f.file).then(r => r.json()));
+  const allArrays = await Promise.all(filePromises);
+  ALL = allArrays.flat().filter(m => m.status !== 'removed');
+
+  // Load sources for the sources table
+  const srcResp = await fetch('sources.json');
+  const sources = await srcResp.json();
+
+  // infobar
+  document.getElementById('infobar').innerHTML =
+    '<span>🗺️ ' + ALL.length + ' maps indexed</span>' +
+    '<span>📦 ' + manifest.files.length + ' sources</span>' +
+    '<span>📅 Last update: ' + manifest.generated.split('T')[0] + '</span>';
+
+  // sources table
+  const tbody = document.querySelector('#sources-table tbody');
+  const statusCls = {active: 'status-active', planned: 'status-planned', backlog: 'status-backlog'};
+  tbody.innerHTML = '<tr><th>Source</th><th>License</th><th>Thumbnail</th><th>Download</th><th>Status</th></tr>' +
+    sources.sources.map(s =>
+      '<tr>' +
+      '<td><a href="' + s.url + '" target="_blank" style="color:#6a7fa8">' + s.name + '</a></td>' +
+      '<td>' + (s.license?.type || '?') + '</td>' +
+      '<td>' + s.thumbnail_policy + '</td>' +
+      '<td>' + s.download_policy + '</td>' +
+      '<td class="' + (statusCls[s.status]||'') + '">' + s.status + '</td>' +
+      '</tr>'
+    ).join('');
+
+  // populate env dropdown
   const envs = [...new Set(ALL.map(m => m.environment).filter(Boolean))].sort();
   const sel = document.getElementById('env');
   envs.forEach(e => { const o = document.createElement('option'); o.value = e; o.textContent = e; sel.appendChild(o); });
+
+  // populate author/source dropdown
+  const authors = [...new Set(ALL.map(m => m.author).filter(Boolean))].sort();
+  const aSel = document.getElementById('author');
+  authors.forEach(a => { const o = document.createElement('option'); o.value = a; o.textContent = a; aSel.appendChild(o); });
+
   onFilter();
 }
 
@@ -120,12 +180,14 @@ function onFilter() { page = 0; applyFilter(); }
 function applyFilter() {
   const text = document.getElementById('text').value.toLowerCase();
   const env = document.getElementById('env').value;
+  const author = document.getElementById('author').value;
   const lic = document.getElementById('license').value;
   const preview = document.getElementById('preview').value;
 
   filtered = ALL;
   if (text) filtered = filtered.filter(m => m.title.toLowerCase().includes(text) || (m.tags||[]).some(t => t.includes(text)));
   if (env) filtered = filtered.filter(m => m.environment === env);
+  if (author) filtered = filtered.filter(m => m.author === author);
   if (lic === 'free') filtered = filtered.filter(m => m.license?.type !== 'unknown');
   if (lic === 'unknown') filtered = filtered.filter(m => m.license?.type === 'unknown');
   if (preview === 'yes') filtered = filtered.filter(m => m.thumbnail_url);

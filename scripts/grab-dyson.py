@@ -1,46 +1,27 @@
 #!/usr/bin/env python3
-"""Scrape Dyson Logos commercial-maps page → index JSON with titles and URLs."""
+"""Grab plugin: Dyson Logos commercial maps.
 
-import json, re, sys, time
+Scrapes dysonlogos.blog/maps/commercial-maps/ → index/dyson-logos.json
+"""
+
+import re, sys
 from pathlib import Path
-from urllib.parse import urlparse
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-try:
-    import requests
-    from bs4 import BeautifulSoup
-except ImportError:
-    sys.exit("pip install requests beautifulsoup4")
+from grab_core import fetch_cached, make_entry, save_index, slugify
+from bs4 import BeautifulSoup
 
+SOURCE_ID = "dyson-logos"
 INDEX_URL = "https://dysonlogos.blog/maps/commercial-maps/"
-OUT = Path(__file__).resolve().parent.parent / "index" / "dyson-logos.json"
-CACHE = Path(__file__).resolve().parent.parent / ".cache"
 
-def slugify(title):
-    s = title.lower().strip()
-    s = re.sub(r"[''']s\b", "s", s)
-    s = re.sub(r"[^a-z0-9]+", "-", s)
-    return s.strip("-")
-
-def fetch_page(url):
-    CACHE.mkdir(exist_ok=True)
-    cache_file = CACHE / "commercial-maps.html"
-    if cache_file.exists():
-        print(f"Using cached {cache_file}")
-        return cache_file.read_text(encoding="utf-8")
-    print(f"Fetching {url} ...")
-    r = requests.get(url, headers={"User-Agent": "dnd-map-index/0.1 (personal project)"}, timeout=30)
-    r.raise_for_status()
-    cache_file.write_text(r.text, encoding="utf-8")
-    return r.text
-
-SKIP_PATHS = {
+SKIP_PATHS = [
     "/about/", "/tag/", "/category/", "/downloads", "/house-rules",
     "/characters", "/maps/commercial", "/maps/tutorials", "/maps/adventures",
     "/maps/cities", "/maps/inns", "/maps/multi-page", "/maps/geomorph",
     "/maps/vertical", "/maps/sewers", "/maps/kevin", "/zerobarrier",
     "/maps/the-dyson", "/maps/dysons-delve", "/maps/erdea",
     "/colour-portfolio", "/shadows-of",
-}
+]
 
 def is_map_link(href):
     if "dysonlogos.blog" not in href and "rpgcharacters.wordpress" not in href:
@@ -67,44 +48,30 @@ def extract_maps(html):
         if not is_map_link(href) or href in seen:
             continue
         seen.add(href)
-        # title from img alt, or link text, or link title attr
         img = a.find("img")
         title = ""
+        thumb = ""
         if img:
             title = img.get("alt", "").strip()
+            src = img.get("src", "")
+            if src:
+                thumb = re.sub(r"\?w=\d+", "?w=200", src)
+                if "?w=" not in thumb:
+                    thumb += "?w=200"
         if not title:
             title = a.get("title", "").strip() or a.get_text(strip=True)
         if not title or len(title) < 3:
             continue
-        # clean up title
         title = re.sub(r"\s*\(?\d+\s*dpi\)?\s*$", "", title, flags=re.I).strip()
-        slug = f"dyson-logos-{slugify(title)}"
-        maps.append({
-            "id": slug,
-            "title": title,
-            "author": "Dyson Logos",
-            "source_url": href,
-            "image_url": "",
-            "license": {
-                "type": "commercial-free",
-                "attribution": "Cartography by Dyson Logos"
-            },
-            "tags": [],
-            "environment": "",
-            "map_type": "battlemap",
-            "style": "bw-ink",
-            "format": "png",
-            "status": "new",
-            "date_indexed": time.strftime("%Y-%m-%d")
-        })
+        entry = make_entry(SOURCE_ID, title, href, thumbnail_url=thumb)
+        if entry["id"] not in seen:
+            maps.append(entry)
     return maps
 
 def main():
-    html = fetch_page(INDEX_URL)
+    html = fetch_cached(INDEX_URL, "dyson-commercial-maps.html")
     maps = extract_maps(html)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(maps, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Extracted {len(maps)} maps → {OUT}")
+    save_index(SOURCE_ID, maps)
 
 if __name__ == "__main__":
     main()

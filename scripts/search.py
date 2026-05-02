@@ -15,6 +15,8 @@ INDEX_DIR = Path(__file__).resolve().parent.parent / "index"
 def load_all():
     maps = []
     for f in sorted(INDEX_DIR.glob("*.json")):
+        if f.name == "manifest.json":
+            continue
         maps.extend(json.loads(f.read_text(encoding="utf-8")))
     return maps
 
