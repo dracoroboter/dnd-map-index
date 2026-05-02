@@ -10,21 +10,22 @@ import re, sys, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from grab_core import fetch_cached, make_entry, save_index
+from grab_core import fetch_cached, make_entry, save_index, get_max_pages, get_scan_interval
 from bs4 import BeautifulSoup
 
 SOURCE_ID = "2minute-tabletop"
 BASE_URL = "https://2minutetabletop.com/product-category/free/"
-MAX_PAGES = 30  # safety limit
 
 def fetch_all_pages():
     """Fetch all paginated listing pages."""
+    max_pages = get_max_pages(SOURCE_ID, 30)
+    max_age = get_scan_interval(SOURCE_ID, 14)
     pages = []
-    for p in range(1, MAX_PAGES + 1):
+    for p in range(1, max_pages + 1):
         url = BASE_URL if p == 1 else f"{BASE_URL}page/{p}/"
         cache_name = f"2minute-page-{p}.html"
         try:
-            html = fetch_cached(url, cache_name)
+            html = fetch_cached(url, cache_name, max_age_days=max_age)
             pages.append(html)
             # stop if this page has no "next" link
             if f"page/{p+1}/" not in html:

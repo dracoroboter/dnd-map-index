@@ -35,7 +35,9 @@
       "download_policy": "direct",
       "indexing_method": "scraper",
       "style": "bw-ink",
-      "format": "png"
+      "format": "png",
+      "max_pages": 1,
+      "scan_interval_days": 14
     },
     {
       "id": "tom-cartos",
@@ -52,7 +54,9 @@
       "download_policy": "link_to_source",
       "indexing_method": "manual_assisted",
       "style": "color-digital",
-      "format": "jpg"
+      "format": "jpg",
+      "max_pages": 50,
+      "scan_interval_days": 14
     },
     {
       "id": "2minute-tabletop",
@@ -69,7 +73,9 @@
       "download_policy": "link_to_source",
       "indexing_method": "scraper",
       "style": "color-painted",
-      "format": "jpg"
+      "format": "jpg",
+      "max_pages": 30,
+      "scan_interval_days": 14
     },
     {
       "id": "seafoot-games",
@@ -86,7 +92,9 @@
       "download_policy": "link_to_source",
       "indexing_method": "manual_assisted",
       "style": "color-digital",
-      "format": "jpg"
+      "format": "jpg",
+      "max_pages": 25,
+      "scan_interval_days": 7
     },
     {
       "id": "dice-grimorium",
@@ -103,7 +111,9 @@
       "download_policy": "link_to_source",
       "indexing_method": "manual_assisted",
       "style": "color-painted",
-      "format": "jpg"
+      "format": "jpg",
+      "max_pages": 50,
+      "scan_interval_days": 7
     },
     {
       "id": "reddit-curated",
@@ -120,7 +130,9 @@
       "download_policy": "link_to_source",
       "indexing_method": "manual_assisted",
       "style": "mixed",
-      "format": "mixed"
+      "format": "mixed",
+      "max_pages": 200,
+      "scan_interval_days": 1
     },
     {
       "id": "forgotten-adventures",
@@ -137,7 +149,9 @@
       "download_policy": "link_to_source",
       "indexing_method": "manual_assisted",
       "style": "color-digital",
-      "format": "png"
+      "format": "png",
+      "max_pages": 10,
+      "scan_interval_days": 14
     }
   ]
 }

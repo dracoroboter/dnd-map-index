@@ -10,7 +10,7 @@ import re, sys, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from grab_core import fetch_cached, make_entry, save_index
+from grab_core import fetch_cached, make_entry, save_index, get_scan_interval
 from bs4 import BeautifulSoup
 
 SOURCE_ID = "tom-cartos"
@@ -128,9 +128,10 @@ def extract_maps_from_category(html, category_url):
 
 def main():
     print(f"Grabbing {SOURCE_ID}...")
+    max_age = get_scan_interval(SOURCE_ID, 14)
 
     # Step 1: fetch gallery overview
-    gallery_html = fetch_cached(GALLERY_URL, "tomcartos-gallery.html")
+    gallery_html = fetch_cached(GALLERY_URL, "tomcartos-gallery.html", max_age_days=max_age)
     category_paths = extract_category_links(gallery_html)
     print(f"  Found {len(category_paths)} category pages")
 
@@ -143,7 +144,7 @@ def main():
         slug = path.strip("/")
         cache_name = f"tomcartos-{slug}.html"
         try:
-            html = fetch_cached(url, cache_name)
+            html = fetch_cached(url, cache_name, max_age_days=max_age)
             maps = extract_maps_from_category(html, url)
             new = 0
             for m in maps:

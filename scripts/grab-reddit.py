@@ -18,7 +18,7 @@ import json, os, re, sys, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from grab_core import fetch_cached, make_entry, save_index, slugify, CACHE_DIR, ROOT
+from grab_core import fetch_cached, make_entry, save_index, slugify, CACHE_DIR, ROOT, get_max_pages, get_scan_interval
 import requests
 
 SOURCE_ID = "reddit-curated"
@@ -153,12 +153,19 @@ def grab_public():
     ]
     all_maps = []
     seen = set()
+    max_age = get_scan_interval(SOURCE_ID, 1)
     for sort, params in listings:
         url = f"https://www.reddit.com/r/{SUBREDDIT}/{sort}.json"
         cache_name = f"reddit-{sort}-{params.get('t', 'hot')}.json"
         CACHE_DIR.mkdir(exist_ok=True)
         cache_file = CACHE_DIR / cache_name
+        use_cache = False
         if cache_file.exists():
+            import os
+            age_days = (time.time() - os.path.getmtime(cache_file)) / 86400
+            if age_days <= max_age:
+                use_cache = True
+        if use_cache:
             print(f"  Using cached {cache_name}")
             data = json.loads(cache_file.read_text(encoding="utf-8"))
         else:
@@ -188,7 +195,7 @@ def grab_authenticated(token):
     seen = set()
     after = None
     page = 0
-    max_pages = 200  # safety: 200 × 100 = 20.000 posts max
+    max_pages = get_max_pages(SOURCE_ID, 200)
 
     while page < max_pages:
         params = {"t": "all", "limit": 100}

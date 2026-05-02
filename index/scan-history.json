@@ -1,0 +1,65 @@
+[
+  {
+    "timestamp": "2026-05-03T01:24:34",
+    "budget": 20,
+    "sources_scanned": 7,
+    "url_checked": 10,
+    "url_broken": 0,
+    "deltas": [
+      {
+        "source": "reddit-curated",
+        "added": 0,
+        "kept": 277,
+        "removed": 0,
+        "total": 277
+      },
+      {
+        "source": "dyson-logos",
+        "added": 0,
+        "kept": 650,
+        "removed": 0,
+        "total": 650
+      },
+      {
+        "source": "tom-cartos",
+        "added": 0,
+        "kept": 289,
+        "removed": 0,
+        "total": 289
+      },
+      {
+        "source": "2minute-tabletop",
+        "added": 0,
+        "kept": 359,
+        "removed": 0,
+        "total": 359
+      },
+      {
+        "source": "seafoot-games",
+        "added": 0,
+        "kept": 210,
+        "removed": 0,
+        "total": 210
+      },
+      {
+        "source": "dice-grimorium",
+        "added": 0,
+        "kept": 361,
+        "removed": 0,
+        "total": 361
+      },
+      {
+        "source": "forgotten-adventures",
+        "added": 0,
+        "kept": 43,
+        "removed": 0,
+        "total": 43
+      }
+    ],
+    "totals": {
+      "added": 0,
+      "kept": 2189,
+      "removed": 0
+    }
+  }
+]

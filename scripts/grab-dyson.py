@@ -8,7 +8,7 @@ import re, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from grab_core import fetch_cached, make_entry, save_index, slugify
+from grab_core import fetch_cached, make_entry, save_index, slugify, get_scan_interval
 from bs4 import BeautifulSoup
 
 SOURCE_ID = "dyson-logos"
@@ -69,7 +69,7 @@ def extract_maps(html):
     return maps
 
 def main():
-    html = fetch_cached(INDEX_URL, "dyson-commercial-maps.html")
+    html = fetch_cached(INDEX_URL, "dyson-commercial-maps.html", max_age_days=get_scan_interval(SOURCE_ID, 14))
     maps = extract_maps(html)
     save_index(SOURCE_ID, maps)
 

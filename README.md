@@ -81,6 +81,12 @@ python3 scripts/search.py --author "Dyson Logos"
 python3 scripts/tag-assist.py --pick 20 --diverse
 
 # Rieseguire gli scraper (aggiorna l'indice)
+python3 scripts/scan-all.py              # scan unificato (budget 100 fetch)
+python3 scripts/scan-all.py --budget 50  # budget ridotto
+python3 scripts/scan-all.py --source reddit  # solo una fonte
+python3 scripts/scan-all.py --dry-run    # mostra piano senza eseguire
+
+# Oppure singoli scraper
 python3 scripts/grab-dyson.py
 python3 scripts/grab-2minute.py
 python3 scripts/grab-tomcartos.py
@@ -121,6 +127,7 @@ dnd-map-index/
 │   ├── grab-dicegrimorium.py # plugin scraper Dice Grimorium
 │   ├── grab-reddit.py     # plugin scraper Reddit r/battlemaps (experimental)
 │   ├── grab-forgottenadv.py # plugin scraper Forgotten Adventures
+│   ├── scan-all.py         # scan unificato con budget
 │   ├── search.py           # ricerca CLI
 │   ├── tag-assist.py       # tagger interattivo
 │   └── rescan.py           # manutenzione (autotag, colore, URL check)

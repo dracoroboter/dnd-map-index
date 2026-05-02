@@ -9,12 +9,11 @@ import re, sys, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from grab_core import fetch_cached, make_entry, save_index, guess_tags
+from grab_core import fetch_cached, make_entry, save_index, guess_tags, get_max_pages, get_scan_interval
 from bs4 import BeautifulSoup
 
 SOURCE_ID = "forgotten-adventures"
 BASE_URL = "https://www.forgotten-adventures.net/product-category/battlemaps/"
-MAX_PAGES = 10  # 176 products / 48 per page = 4 pages
 
 
 def clean_title(title):
@@ -23,12 +22,14 @@ def clean_title(title):
 
 
 def fetch_all_pages():
+    max_pages = get_max_pages(SOURCE_ID, 10)
+    max_age = get_scan_interval(SOURCE_ID, 14)
     pages = []
-    for p in range(1, MAX_PAGES + 1):
+    for p in range(1, max_pages + 1):
         url = BASE_URL if p == 1 else f"{BASE_URL}page/{p}/"
         cache_name = f"forgottenadv-page-{p}.html"
         try:
-            html = fetch_cached(url, cache_name)
+            html = fetch_cached(url, cache_name, max_age_days=max_age)
             pages.append(html)
             if f"/page/{p+1}/" not in html:
                 break

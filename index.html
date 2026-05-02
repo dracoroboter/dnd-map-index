@@ -159,21 +159,27 @@ async function load() {
   document.getElementById('infobar').innerHTML =
     '<span>🗺️ ' + ALL.length + ' maps indexed</span>' +
     '<span>📦 ' + manifest.files.length + ' sources</span>' +
-    '<span>📅 Last update: ' + manifest.generated.split('T')[0] + '</span>';
+    '<span>📅 Last scan: ' + manifest.generated.split('T')[0] + '</span>' +
+    '<span>🔄 <a href="scan-history.html" style="color:#6a7fa8">Scan history</a></span>';
+
+  // Build lookup: source_id → last_scan from manifest
+  const scanDates = {};
+  manifest.files.forEach(f => { scanDates[f.source_id] = (f.last_scan || '').split('T')[0]; });
 
   // sources table
   const tbody = document.querySelector('#sources-table tbody');
-  const statusCls = {active: 'status-active', planned: 'status-planned', backlog: 'status-backlog'};
-  tbody.innerHTML = '<tr><th>Source</th><th>License</th><th>Thumbnail</th><th>Download</th><th>Status</th></tr>' +
-    sources.sources.map(s =>
-      '<tr>' +
+  const statusCls = {active: 'status-active', planned: 'status-planned', backlog: 'status-backlog', experimental: 'status-planned'};
+  tbody.innerHTML = '<tr><th>Source</th><th>Maps</th><th>License</th><th>Last scan</th><th>Status</th></tr>' +
+    sources.sources.map(s => {
+      const mf = manifest.files.find(f => f.source_id === s.id);
+      return '<tr>' +
       '<td><a href="' + s.url + '" target="_blank" style="color:#6a7fa8">' + s.name + '</a></td>' +
+      '<td>' + (mf ? mf.count : '—') + '</td>' +
       '<td>' + (s.license?.type || '?') + '</td>' +
-      '<td>' + s.thumbnail_policy + '</td>' +
-      '<td>' + s.download_policy + '</td>' +
+      '<td>' + (scanDates[s.id] || '—') + '</td>' +
       '<td class="' + (statusCls[s.status]||'') + '">' + s.status + '</td>' +
-      '</tr>'
-    ).join('');
+      '</tr>';
+    }).join('');
 
   // populate env dropdown
   const envs = [...new Set(ALL.map(m => m.environment).filter(Boolean))].sort();

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan History — dnd-map-index</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f0e8; color: #333; padding: 1rem; max-width: 900px; margin: 0 auto; }
+h1 { color: #5a3e1b; margin-bottom: .5rem; }
+a { color: #6a7fa8; }
+.back { margin-bottom: 1rem; font-size: .9rem; }
+.scan-entry { background: #fff; border: 1px solid #d4c9b0; border-radius: 6px; padding: 1rem; margin-bottom: 1rem; }
+.scan-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+.scan-date { font-weight: bold; color: #5a3e1b; }
+.scan-summary { font-size: .85rem; color: #666; }
+.scan-totals { display: flex; gap: 1rem; margin: .5rem 0; font-size: .9rem; }
+.added { color: #3a8a3a; }
+.removed { color: #c44; }
+.kept { color: #666; }
+table { width: 100%; border-collapse: collapse; margin-top: .5rem; font-size: .85rem; }
+th { text-align: left; border-bottom: 2px solid #d4c9b0; padding: .3rem .5rem; color: #5a3e1b; }
+td { border-bottom: 1px solid #eee; padding: .3rem .5rem; }
+.empty { text-align: center; color: #999; padding: 3rem; }
+</style>
+</head>
+<body>
+
+<div class="back">← <a href="index.html">Back to map index</a></div>
+<h1>🔄 Scan History</h1>
+<p style="color:#666; margin-bottom:1rem; font-size:.9rem">Last 10 scans. Each scan grabs new maps from sources and checks existing URLs.</p>
+
+<div id="history">
+  <div class="empty">Loading...</div>
+</div>
+
+<script>
+async function load() {
+  const el = document.getElementById('history');
+  try {
+    const resp = await fetch('index/scan-history.json');
+    if (!resp.ok) { el.innerHTML = '<div class="empty">No scan history yet. Run <code>python3 scripts/scan-all.py</code> to start.</div>'; return; }
+    const history = await resp.json();
+    if (!history.length) { el.innerHTML = '<div class="empty">No scans recorded yet.</div>'; return; }
+
+    el.innerHTML = history.map((scan, i) => {
+      const date = new Date(scan.timestamp);
+      const dateStr = date.toLocaleDateString('en-GB', {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      const t = scan.totals || {};
+      const deltas = scan.deltas || [];
+
+      let deltaRows = '';
+      if (deltas.length) {
+        deltaRows = '<table><tr><th>Source</th><th>Total</th><th class="added">+New</th><th class="kept">Kept</th><th class="removed">-Removed</th></tr>' +
+          deltas.map(d =>
+            '<tr><td>' + d.source + '</td><td>' + d.total + '</td>' +
+            '<td class="added">' + (d.added ? '+' + d.added : '—') + '</td>' +
+            '<td class="kept">' + d.kept + '</td>' +
+            '<td class="removed">' + (d.removed ? '-' + d.removed : '—') + '</td></tr>'
+          ).join('') + '</table>';
+      }
+
+      return '<div class="scan-entry">' +
+        '<div class="scan-header">' +
+          '<span class="scan-date">' + dateStr + '</span>' +
+          '<span class="scan-summary">Budget: ' + scan.budget + ' fetches | ' + scan.sources_scanned + ' sources</span>' +
+        '</div>' +
+        '<div class="scan-totals">' +
+          '<span class="added">+' + (t.added||0) + ' new</span>' +
+          '<span class="kept">' + (t.kept||0) + ' confirmed</span>' +
+          '<span class="removed">-' + (t.removed||0) + ' removed</span>' +
+          '<span>| URL checked: ' + (scan.url_checked||0) + ' (' + (scan.url_broken||0) + ' broken)</span>' +
+        '</div>' +
+        deltaRows +
+      '</div>';
+    }).join('');
+  } catch(e) {
+    el.innerHTML = '<div class="empty">Error loading scan history: ' + e.message + '</div>';
+  }
+}
+load();
+</script>
+</body>
+</html>

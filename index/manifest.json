@@ -1,48 +1,55 @@
 {
-  "generated": "2026-05-03T00:47:21",
+  "generated": "2026-05-03T01:24:23",
   "total_maps": 2189,
   "files": [
     {
       "file": "2minute-tabletop.json",
       "source_id": "2minute-tabletop",
       "count": 359,
-      "last_updated": "2026-05-03"
+      "last_updated": "2026-05-03",
+      "last_scan": "2026-05-03T01:24:23"
     },
     {
       "file": "dice-grimorium.json",
       "source_id": "dice-grimorium",
       "count": 361,
-      "last_updated": "2026-05-03"
+      "last_updated": "2026-05-03",
+      "last_scan": "2026-05-03T01:24:23"
     },
     {
       "file": "dyson-logos.json",
       "source_id": "dyson-logos",
       "count": 650,
-      "last_updated": "2026-05-03"
+      "last_updated": "2026-05-03",
+      "last_scan": "2026-05-03T01:24:23"
     },
     {
       "file": "forgotten-adventures.json",
       "source_id": "forgotten-adventures",
       "count": 43,
-      "last_updated": "2026-05-03"
+      "last_updated": "2026-05-03",
+      "last_scan": "2026-05-03T01:24:23"
     },
     {
       "file": "reddit-curated.json",
       "source_id": "reddit-curated",
       "count": 277,
-      "last_updated": "2026-05-03"
+      "last_updated": "2026-05-03",
+      "last_scan": "2026-05-03T01:24:23"
     },
     {
       "file": "seafoot-games.json",
       "source_id": "seafoot-games",
       "count": 210,
-      "last_updated": "2026-05-03"
+      "last_updated": "2026-05-03",
+      "last_scan": "2026-05-03T01:24:23"
     },
     {
       "file": "tom-cartos.json",
       "source_id": "tom-cartos",
       "count": 289,
-      "last_updated": "2026-05-03"
+      "last_updated": "2026-05-03",
+      "last_scan": "2026-05-03T01:24:23"
     }
   ]
 }
