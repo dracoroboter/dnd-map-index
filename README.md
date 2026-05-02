@@ -53,6 +53,10 @@ python3 -m http.server 8080
 # apri http://localhost:8080
 ```
 
+### Analytics
+
+Il sito usa [GoatCounter](https://www.goatcounter.com) per statistiche anonime sulle visite. Nessun cookie, nessun tracciamento personale, GDPR-friendly. Dashboard pubblica: [dracoroboter.goatcounter.com](https://dracoroboter.goatcounter.com).
+
 ---
 
 ## Uso rapido (CLI)
