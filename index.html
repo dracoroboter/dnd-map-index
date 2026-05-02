@@ -6,36 +6,64 @@
 <title>dnd-map-index</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #1a1a2e; color: #e0e0e0; padding: 1rem; }
-h1 { text-align: center; color: #c4a35a; margin-bottom: .3rem; font-size: 1.5rem; }
-.subtitle { text-align: center; color: #888; font-size: .85rem; margin-bottom: 1rem; }
-.subtitle a { color: #7a9ec2; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f0e8; color: #333; padding: 1rem; max-width: 1200px; margin: 0 auto; }
+
+header { text-align: center; margin-bottom: 1.5rem; border-bottom: 2px solid #c4a35a; padding-bottom: 1rem; }
+header img { height: 60px; vertical-align: middle; margin-right: .5rem; }
+header h1 { display: inline; font-size: 1.5rem; color: #5a3e1b; vertical-align: middle; }
+.subtitle { color: #888; font-size: .85rem; margin-top: .3rem; }
+.subtitle a { color: #6a7fa8; }
+
+.about { background: #ede7d9; border: 1px solid #d4c9b0; border-radius: 6px; padding: .8rem 1rem; margin-bottom: 1rem; font-size: .85rem; color: #555; line-height: 1.5; }
+.about strong { color: #5a3e1b; }
+.about a { color: #6a7fa8; }
+
 .filters { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 1rem; }
-.filters select, .filters input { background: #16213e; color: #e0e0e0; border: 1px solid #333; border-radius: 4px; padding: .4rem .6rem; font-size: .9rem; }
-.filters input { width: 200px; }
+.filters select, .filters input { background: #fff; color: #333; border: 1px solid #ccc; border-radius: 4px; padding: .4rem .6rem; font-size: .9rem; }
+.filters input { width: 220px; }
+
 .stats { text-align: center; color: #888; font-size: .85rem; margin-bottom: 1rem; }
+
 .results { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .8rem; }
-.card { background: #16213e; border: 1px solid #333; border-radius: 6px; padding: .8rem; transition: border-color .2s; }
-.card:hover { border-color: #c4a35a; }
-.card h3 { font-size: .95rem; color: #c4a35a; margin-bottom: .4rem; }
+.card { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: .8rem; transition: border-color .2s; }
+.card:hover { border-color: #c4a35a; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.card h3 { font-size: .95rem; color: #5a3e1b; margin-bottom: .4rem; }
 .card h3 a { color: inherit; text-decoration: none; }
 .card h3 a:hover { text-decoration: underline; }
-.meta { font-size: .8rem; color: #999; line-height: 1.6; }
-.tag { display: inline-block; background: #0f3460; color: #7a9ec2; padding: .1rem .4rem; border-radius: 3px; font-size: .75rem; margin: .1rem; }
-.tag.env { background: #1a4a1a; color: #7ac27a; }
+.meta { font-size: .8rem; color: #777; line-height: 1.6; }
+.tag { display: inline-block; background: #e8eef5; color: #4a6a8a; padding: .1rem .4rem; border-radius: 3px; font-size: .75rem; margin: .1rem; }
+.tag.env { background: #e5f0e5; color: #3a6a3a; }
 .license { font-size: .75rem; }
-.license.free { color: #5cb85c; }
-.license.unknown { color: #d9534f; }
-.empty { text-align: center; color: #666; padding: 2rem; }
+.license.free { color: #3a8a3a; }
+.license.unknown { color: #c44; }
+.empty { text-align: center; color: #999; padding: 2rem; }
+
+footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: .8rem; color: #999; text-align: center; line-height: 1.6; }
+footer a { color: #6a7fa8; }
 </style>
 </head>
 <body>
 
-<h1>⚔️ dnd-map-index</h1>
-<p class="subtitle">Free D&D 5e battle maps — <a href="https://github.com/dracoroboter/dnd-map-index">GitHub</a></p>
+<header>
+  <img src="img/logo.png" alt="dracoroboter">
+  <h1>dnd-map-index</h1>
+  <div class="subtitle">Free D&D 5e battle map index — <a href="https://github.com/dracoroboter/dnd-map-index">GitHub</a></div>
+</header>
+
+<div class="about">
+  <strong>About this project.</strong>
+  A personal, open-source (GPL2) index of free D&D 5e battle maps with structured metadata.
+  This is a hobby project with limited scope — not a complete service.
+  For a professional alternative with 5000+ maps, see <a href="https://lostatlas.co" target="_blank">Lost Atlas</a>.
+  <br>
+  Maps are <strong>not hosted here</strong> — the index contains only metadata and links to the original sources.
+  All maps remain property of their respective authors.
+  <br>
+  Full documentation: <a href="https://github.com/dracoroboter/dnd-map-index#readme">README</a>.
+</div>
 
 <div class="filters">
-  <input type="text" id="text" placeholder="Search title..." oninput="search()">
+  <input type="text" id="text" placeholder="Search title or tags..." oninput="search()">
   <select id="env" onchange="search()"><option value="">All environments</option></select>
   <select id="license" onchange="search()">
     <option value="">All licenses</option>
@@ -43,7 +71,7 @@ h1 { text-align: center; color: #c4a35a; margin-bottom: .3rem; font-size: 1.5rem
     <option value="unknown">🔴 Unknown</option>
   </select>
   <select id="status" onchange="search()">
-    <option value="">All status</option>
+    <option value="">All maps</option>
     <option value="ok">Tagged only</option>
   </select>
 </div>
@@ -51,13 +79,23 @@ h1 { text-align: center; color: #c4a35a; margin-bottom: .3rem; font-size: 1.5rem
 <div class="stats" id="stats"></div>
 <div class="results" id="results"></div>
 
+<footer>
+  <strong>dnd-map-index</strong> by <a href="https://github.com/dracoroboter">dracoroboter</a>
+  <br>
+  Software licensed under <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL2</a>.
+  Map data (images, titles, descriptions) remains under the copyright and license chosen by each original author.
+  <br>
+  Copyright concerns? Contact <strong>dracoroboter(at)gmail.com</strong>.
+  <br>
+  This is a hobby project maintained in spare time. Any reported copyright issues will be addressed as soon as possible.
+</footer>
+
 <script>
 let ALL = [];
 
 async function load() {
   const r = await fetch('index/dyson-logos.json');
   ALL = (await r.json()).filter(m => m.status !== 'removed');
-  // populate env dropdown
   const envs = [...new Set(ALL.map(m => m.environment).filter(Boolean))].sort();
   const sel = document.getElementById('env');
   envs.forEach(e => { const o = document.createElement('option'); o.value = e; o.textContent = e; sel.appendChild(o); });
@@ -77,24 +115,22 @@ function search() {
   if (lic === 'unknown') maps = maps.filter(m => m.license?.type === 'unknown');
   if (status === 'ok') maps = maps.filter(m => m.status === 'ok');
 
-  document.getElementById('stats').textContent = `${maps.length} maps found (${ALL.length} total in index)`;
+  document.getElementById('stats').textContent = maps.length + ' maps found (' + ALL.length + ' total in index)';
 
   const el = document.getElementById('results');
   if (!maps.length) { el.innerHTML = '<div class="empty">No maps found.</div>'; return; }
 
   el.innerHTML = maps.slice(0, 60).map(m => {
-    const tags = (m.tags||[]).map(t => `<span class="tag">${t}</span>`).join('');
-    const envTag = m.environment ? `<span class="tag env">${m.environment}</span>` : '';
+    const tags = (m.tags||[]).map(t => '<span class="tag">' + t + '</span>').join('');
+    const envTag = m.environment ? '<span class="tag env">' + m.environment + '</span>' : '';
     const licType = m.license?.type || 'unknown';
     const licClass = licType === 'unknown' ? 'unknown' : 'free';
     const licLabel = licType === 'unknown' ? '🔴 unknown' : '🟢 ' + licType;
-    return `<div class="card">
-      <h3><a href="${m.source_url}" target="_blank" rel="noopener">${m.title}</a></h3>
-      <div class="meta">
-        ${envTag} ${tags}
-        <br><span class="license ${licClass}">${licLabel}</span> — ${m.author}
-      </div>
-    </div>`;
+    return '<div class="card">' +
+      '<h3><a href="' + m.source_url + '" target="_blank" rel="noopener">' + m.title + '</a></h3>' +
+      '<div class="meta">' + envTag + ' ' + tags +
+      '<br><span class="license ' + licClass + '">' + licLabel + '</span> — ' + m.author +
+      '</div></div>';
   }).join('');
 }
 

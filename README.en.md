@@ -32,7 +32,32 @@ This is not a complete service. It's a personal tool with limited scope. If you 
 
 ---
 
-## Quick start
+## Web interface
+
+The site is available at **[dracoroboter.github.io/dnd-map-index](https://dracoroboter.github.io/dnd-map-index/)** — served by GitHub Pages directly from the repo.
+
+Client-side search on `index.html` in the repo root. Filters by environment, license, free text. No backend.
+
+### GitHub Pages setup (one-time)
+
+1. GitHub → repo → Settings → Pages
+2. Source: **Deploy from a branch**
+3. Branch: **main**, folder: **/ (root)**
+4. Save — site is live after a few minutes
+
+Subsequent pushes update the site automatically.
+
+### Local development
+
+```bash
+cd ~/dnd-map-index
+python3 -m http.server 8080
+# open http://localhost:8080
+```
+
+---
+
+## Quick start (CLI)
 
 ```bash
 # Index statistics
