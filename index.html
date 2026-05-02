@@ -152,6 +152,7 @@ function render() {
       '<h3><a href="' + m.source_url + '" target="_blank" rel="noopener">' + m.title + '</a></h3>' +
       '<div class="meta">' + envTag + ' ' + tags +
       '<br><span class="license ' + licClass + '">' + licLabel + '</span> — ' + m.author +
+      ' — <a href="' + (m.source_url.match(/https?:\/\/[^/]+/)||[''])[0] + '" target="_blank" style="color:#6a7fa8;font-size:.72rem;">source</a>' +
       '</div></div></div>';
   }).join('');
 
