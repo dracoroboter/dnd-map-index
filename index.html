@@ -80,6 +80,11 @@ footer a { color: #6a7fa8; }
     <option value="free">🟢 Free</option>
     <option value="unknown">🔴 Unknown</option>
   </select>
+  <select id="preview" onchange="onFilter()">
+    <option value="">All previews</option>
+    <option value="yes">With preview</option>
+    <option value="no">No preview</option>
+  </select>
 </div>
 
 <div class="stats" id="stats"></div>
@@ -116,12 +121,15 @@ function applyFilter() {
   const text = document.getElementById('text').value.toLowerCase();
   const env = document.getElementById('env').value;
   const lic = document.getElementById('license').value;
+  const preview = document.getElementById('preview').value;
 
   filtered = ALL;
   if (text) filtered = filtered.filter(m => m.title.toLowerCase().includes(text) || (m.tags||[]).some(t => t.includes(text)));
   if (env) filtered = filtered.filter(m => m.environment === env);
   if (lic === 'free') filtered = filtered.filter(m => m.license?.type !== 'unknown');
   if (lic === 'unknown') filtered = filtered.filter(m => m.license?.type === 'unknown');
+  if (preview === 'yes') filtered = filtered.filter(m => m.thumbnail_url);
+  if (preview === 'no') filtered = filtered.filter(m => !m.thumbnail_url);
 
   render();
 }
