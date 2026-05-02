@@ -1,18 +1,24 @@
 {
-  "generated": "2026-05-02T17:08:41",
-  "total_maps": 1009,
+  "generated": "2026-05-03T00:14:28",
+  "total_maps": 1298,
   "files": [
     {
       "file": "2minute-tabletop.json",
       "source_id": "2minute-tabletop",
       "count": 359,
-      "last_updated": "2026-05-02"
+      "last_updated": "2026-05-03"
     },
     {
       "file": "dyson-logos.json",
       "source_id": "dyson-logos",
       "count": 650,
-      "last_updated": "2026-05-02"
+      "last_updated": "2026-05-03"
+    },
+    {
+      "file": "tom-cartos.json",
+      "source_id": "tom-cartos",
+      "count": 289,
+      "last_updated": "2026-05-03"
     }
   ]
 }
