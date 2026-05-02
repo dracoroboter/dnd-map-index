@@ -72,6 +72,8 @@ total_maps = 0
 for f in sorted(INDEX_DIR.glob("*.json")):
     if f.name == "manifest.json":
         continue
+    if f.name == "scan-history.json":
+        continue
     maps = json.loads(f.read_text())
     test(f"{f.name} is valid JSON array", isinstance(maps, list))
     test(f"{f.name} is not empty", len(maps) > 0)
@@ -119,7 +121,7 @@ if manifest_file.exists():
     test("manifest total_maps matches actual", manifest.get("total_maps") == total_maps,
          f"manifest={manifest.get('total_maps')}, actual={total_maps}")
     test("manifest files count matches index files",
-         len(manifest.get("files", [])) == len(list(f for f in INDEX_DIR.glob("*.json") if f.name != "manifest.json")))
+         len(manifest.get("files", [])) == len(list(f for f in INDEX_DIR.glob("*.json") if f.name not in ("manifest.json", "scan-history.json"))))
 
 # ── 4. search.py smoke test ──────────────────────────────────────
 
