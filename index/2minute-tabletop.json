@@ -623,10 +623,12 @@
     ],
     "environment": "dungeon",
     "map_type": "battlemap",
-    "style": "color-painted",
+    "style": "color",
     "format": "jpg",
     "status": "ok",
-    "date_indexed": "2026-05-02"
+    "date_indexed": "2026-05-02",
+    "style_scanned": true,
+    "last_checked": "2026-05-02"
   },
   {
     "id": "2minute-tabletop-sci-fi-building-assets",
@@ -3559,10 +3561,12 @@
     ],
     "environment": "crypt",
     "map_type": "battlemap",
-    "style": "color-painted",
+    "style": "color",
     "format": "jpg",
     "status": "ok",
-    "date_indexed": "2026-05-02"
+    "date_indexed": "2026-05-02",
+    "style_scanned": true,
+    "last_checked": "2026-05-02"
   },
   {
     "id": "2minute-tabletop-fallen-star",
@@ -6212,10 +6216,12 @@
     ],
     "environment": "dungeon",
     "map_type": "battlemap",
-    "style": "color-painted",
+    "style": "color",
     "format": "jpg",
     "status": "ok",
-    "date_indexed": "2026-05-02"
+    "date_indexed": "2026-05-02",
+    "style_scanned": true,
+    "last_checked": "2026-05-02"
   },
   {
     "id": "2minute-tabletop-cursed-cave",

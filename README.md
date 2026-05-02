@@ -2,11 +2,11 @@
 
 > 🇬🇧 [English version (auto-translated)](README.en.md)
 
-**Versione**: 0.1.0 — 2026-05-02
+**Versione**: 0.2.0 — 2026-05-02
 
 Indice ricercabile di battle map D&D 5e gratuite, con metadati strutturati (autore, licenza, tipo, tags).
 
-**Stato**: MVP — 650 mappe Dyson Logos indicizzate, 20 taggate, ricerca CLI funzionante.
+**Stato**: 1009 mappe indicizzate da 2 fonti (Dyson Logos + 2-Minute Tabletop), ricerca CLI e webapp funzionanti.
 
 ---
 
@@ -22,7 +22,7 @@ Non è un servizio completo. È un tool personale con scope limitato. Se cerchi 
 
 | | Lost Atlas | dnd-map-index |
 |-|------------|---------------|
-| Mappe | 5000+ | ~650 (Dyson Logos) |
+| Mappe | 5000+ | ~1009 (2 fonti) |
 | Filtro licenza | ❌ | ✅ |
 | Open source | ❌ | ✅ GPL2 |
 | Offline | ❌ | ✅ |
@@ -67,48 +67,80 @@ python3 scripts/search.py --env tavern
 # Cerca per testo nel titolo
 python3 scripts/search.py --text crypt
 
-# Cerca solo mappe taggate
-python3 scripts/search.py --env temple --tagged-only
-
 # Cerca per licenza
 python3 scripts/search.py --license free -n 10
+
+# Cerca per autore/fonte
+python3 scripts/search.py --author "Dyson Logos"
 
 # Taggare mappe interattivamente (20 diverse per tipo)
 python3 scripts/tag-assist.py --pick 20 --diverse
 
-# Rieseguire lo scraper (aggiorna l'indice)
+# Rieseguire gli scraper (aggiorna l'indice)
 python3 scripts/grab-dyson.py
+python3 scripts/grab-2minute.py
+
+# Auto-taggare mappe senza tag
+python3 scripts/rescan.py --autotag
+
+# Rilevamento B&W vs colore (5 mappe alla volta)
+python3 scripts/rescan.py --color 5
+
+# Test di non regressione
+python3 tests/test_all.py
 ```
 
 ## Struttura
 
 ```
 dnd-map-index/
-├── index/                  # un JSON per fonte
-│   └── dyson-logos.json    # 650 mappe
+├── index/                  # un JSON per fonte + manifest
+│   ├── manifest.json       # lista file, conteggi, data aggiornamento
+│   ├── dyson-logos.json    # 650 mappe
+│   └── 2minute-tabletop.json # 359 mappe
+├── index.html              # webapp (GitHub Pages)
 ├── sources.json            # configurazione fonti (licenze, policy)
 ├── scripts/
-│   ├── grab-dyson.py       # scraper Dyson Logos
+│   ├── grab_core.py        # funzionalità comuni (pluggabile)
+│   ├── grab-dyson.py       # plugin scraper Dyson Logos
+│   ├── grab-2minute.py     # plugin scraper 2-Minute Tabletop
+│   ├── search.py           # ricerca CLI
 │   ├── tag-assist.py       # tagger interattivo
-│   └── search.py           # ricerca CLI
-├── docs/
-│   └── PlanBook.md         # piano di sviluppo completo
+│   └── rescan.py           # manutenzione (autotag, colore, URL check)
+├── tests/
+│   └── test_all.py         # test di non regressione
+├── docs/                   # documentazione (italiano, traduzioni inglesi)
 └── .gitignore
 ```
+
+### Architettura pluggabile
+
+Ogni fonte ha uno script `grab-<source>.py` che importa da `grab_core.py` le funzionalità comuni (slugify, guess_tags, fetch con cache, salvataggio indice + manifest). Per aggiungere una fonte: creare un nuovo `grab-<source>.py` + aggiungere un record in `sources.json`.
 
 ## Fonti
 
 | Fonte | Mappe | Licenza | Status |
 |-------|-------|---------|--------|
 | **Dyson Logos** | ~650 | commercial-free (attribution) | ✅ active |
+| **2-Minute Tabletop** | ~359 | CC BY-NC 4.0 | ✅ active |
 | Tom Cartos | ~500 | TOM license (attribution, no edit) | planned |
-| 2-Minute Tabletop | ~300 | CC BY-NC 4.0 | planned |
 | Seafoot Games | ~200 | personal-free | backlog |
 | Dice Grimorium | ~100 | da verificare | backlog |
 | Reddit r/battlemaps | variabile | variabile | backlog |
 | Forgotten Adventures | ~50 | personal-free | backlog |
 
 Ogni fonte è configurata in `sources.json` con policy per thumbnail, download e metodo di indicizzazione. Aggiungere una fonte = aggiungere un record + (opzionalmente) uno script.
+
+## Prossimi passi
+
+- [ ] Attivare **Tom Cartos** (~500 mappe, TOM license) — `grab-tomcartos.py`
+- [ ] Attivare **Seafoot Games** (~200 mappe, personal-free) — `grab-seafoot.py`
+- [ ] Attivare **Dice Grimorium** (~100 mappe, licenza da verificare) — `grab-dicegrimorium.py`
+- [ ] Curazione manuale **Reddit r/battlemaps** — selezione post con licenza chiara
+- [ ] Attivare **Forgotten Adventures** (~50 mappe) — `grab-forgottenadv.py`
+- [ ] Completare rescan colore B&W/color su tutte le fonti
+- [ ] Ricerca semantica (futura)
+- [ ] Integrazione con progetto `dungeonandragon` (futura)
 
 ## Dipendenze
 

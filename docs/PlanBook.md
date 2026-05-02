@@ -47,7 +47,7 @@ Tutte le fonti sono definite in `sources.json` con i loro parametri. Ogni fonte 
 |---|-------|-------|---------|--------|
 | 1 | **Dyson Logos** (dysonlogos.blog) | ~1000 B&W | commercial-free, attribution | `active` |
 | 2 | **Tom Cartos** (tomcartos.com) | ~500 watermarked | TOM license, attribution, no edit | `planned` |
-| 3 | **2-Minute Tabletop** (2minutetabletop.com) | ~300 colore | CC BY-NC 4.0 | `planned` |
+| 3 | **2-Minute Tabletop** (2minutetabletop.com) | ~359 colore | CC BY-NC 4.0 | `active` |
 | 4 | **Seafoot Games** (seafootgames.com) | ~200 | personal-free | `backlog` |
 | 5 | **Dice Grimorium** (dicegrimorium.com) | ~100 | unknown (da verificare) | `backlog` |
 | 6 | **Reddit r/battlemaps** | migliaia | variabile per post | `backlog` |
@@ -159,22 +159,22 @@ ship, underwater, planar, sky
 
 ```
 dnd-map-index/                    # repo GPL2
-├── index/                        # un JSON per fonte
-│   └── dyson-logos.json          # (fase 1: solo questo)
+├── index/                        # un JSON per fonte + manifest
+│   ├── manifest.json             # lista file, conteggi, data aggiornamento
+│   ├── dyson-logos.json
+│   └── 2minute-tabletop.json
+├── index.html                    # webapp (GitHub Pages)
 ├── sources.json                  # definizione fonti con configurazione
-├── schema.json                   # JSON Schema per validazione
 ├── scripts/
-│   ├── grab-dyson.py             # scraper Dyson Logos
-│   ├── fetch.py                  # download on-demand
+│   ├── grab_core.py              # funzionalità comuni (pluggabile)
+│   ├── grab-dyson.py             # plugin scraper Dyson Logos
+│   ├── grab-2minute.py           # plugin scraper 2-Minute Tabletop
 │   ├── search.py                 # ricerca CLI
-│   ├── rescan.py                 # verifica URL
-│   └── validate.py               # validazione index vs schema
-├── thumbs/                       # solo per fonti con thumbnail_policy=local
-│   └── dyson-logos/
-├── webapp/                       # sito statico (fase 4)
-│   ├── index.html
-│   ├── app.js
-│   └── style.css
+│   ├── tag-assist.py             # tagger interattivo
+│   └── rescan.py                 # manutenzione (autotag, colore, URL check)
+├── tests/
+│   └── test_all.py               # test di non regressione
+├── docs/                         # documentazione
 ├── .gitignore
 ├── LICENSE                       # GPL2
 └── README.md
@@ -198,35 +198,43 @@ Immagini full-size (mai nel repo):
 - [x] Analisi critica (C1-C9)
 - [x] Posizionamento rispetto a Lost Atlas
 
-### Fase 1 — MVP: Dyson Logos + CLI
+### Fase 1 — MVP: Dyson Logos + CLI ✅
 
-Solo Dyson Logos. Obiettivo: indice funzionante e ricercabile.
+- [x] `sources.json` con tutte le 7 fonti configurate
+- [x] `grab-dyson.py`: scrape → `index/dyson-logos.json` (650 mappe)
+- [x] Auto-tagging da titolo (`guess_tags` in `grab_core.py`)
+- [x] `search.py`: ricerca per tag, environment, licenza, autore, testo libero
+- [x] `README.md` con descrizione onesta e raccomandazione Lost Atlas
+- [ ] `fetch.py`: download on-demand (non ancora implementato)
 
-- [ ] `sources.json` con tutte le 7 fonti (Dyson `active`, altre `planned`/`backlog`)
-- [ ] `grab-dyson.py`: scrape pagina `/maps/commercial-maps/` → `index/dyson-logos.json`
-- [ ] Tagging manuale delle prime 20 mappe per validare vocabolario
-- [ ] `search.py`: ricerca per tag, environment, licenza, testo libero
-- [ ] `fetch.py`: download on-demand in `~/.dnd-map-index/maps/`
-- [ ] `README.md` con descrizione onesta e raccomandazione Lost Atlas
+### Fase 2 — Fonti aggiuntive + architettura pluggabile ✅ (parziale)
 
-### Fase 2 — Fonti aggiuntive
+- [x] `grab_core.py`: funzionalità comuni (slugify, guess_tags, fetch cached, save + manifest)
+- [x] Architettura pluggabile: ogni fonte ha `grab-<source>.py` che importa da `grab_core`
+- [x] `grab-2minute.py`: 2-Minute Tabletop attivato (359 mappe)
+- [x] `index/manifest.json`: generato automaticamente, lista file + conteggi
+- [x] Merge con dati esistenti al re-grab (preserva tag manuali, rescan data)
+- [ ] Attivare Tom Cartos
+- [ ] Attivare Seafoot Games, Dice Grimorium, Reddit, Forgotten Adventures
 
-- [ ] Attivare Tom Cartos (`planned` → `active`, `thumbnail_policy: remote`, `download_policy: link_to_source`)
-- [ ] Attivare 2-Minute Tabletop (idem)
-- [ ] Valutare tagging automatico con LLM (titolo + thumbnail)
+### Fase 3 — Rescan ✅
 
-### Fase 3 — Rescan
+- [x] `rescan.py` unificato: default processa N mappe con tutti i check pendenti
+- [x] Check incrementali: auto-tag (se vuoto), colore (se non scansionato), URL (sempre)
+- [x] Flag singoli (`--autotag`, `--color`, `--check-urls`) forzano il check anche se già fatto
+- [x] `rescan-status.json`: stato machine-readable aggiornato ad ogni esecuzione
+- [x] Policy broken → removed documentata (2 rescan consecutivi)
 
-- [ ] `rescan.py`: HEAD request su `source_url` e `image_url`
-- [ ] Modalità: `--full`, `--source <nome>`, `--stale <giorni>`
-- [ ] Policy: 2 rescan `broken` consecutivi → `removed`, nascosta, thumbnail rimossa
+### Fase 4 — Web app ✅
 
-### Fase 4 — Web app
-
-- [ ] Sito statico su GitHub Pages
-- [ ] Griglia con thumbnail remote (lazy loading)
-- [ ] Filtri: environment, tags, autore, licenza (🟢 Free / 🔴 Solo link)
-- [ ] Dettaglio mappa con metadati + link fonte + download (solo fonti `direct`)
+- [x] Sito statico su GitHub Pages (`index.html` nella root)
+- [x] Caricamento dinamico da `manifest.json` (supporta fonti multiple)
+- [x] Griglia con thumbnail remote (lazy loading)
+- [x] Filtri: environment, autore/fonte, licenza, B&W/colore, preview, testo libero
+- [x] Paginazione (24 mappe per pagina)
+- [x] About con scopi, limiti, link progetti fratelli, contatto copyright
+- [x] Infobar con conteggio mappe, numero fonti, data ultimo aggiornamento
+- [x] Tab fonti apribile con licenze e policy
 
 ### Fase 5 — Ricerca semantica (futura, non nel MVP)
 

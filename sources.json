@@ -48,7 +48,7 @@
       },
       "thumbnail_policy": "remote",
       "download_policy": "link_to_source",
-      "indexing_method": "manual_assisted",
+      "indexing_method": "scraper",
       "style": "color-painted",
       "format": "jpg"
     },

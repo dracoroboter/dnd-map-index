@@ -1,26 +1,25 @@
 {
-  "last_run": "2026-05-02T17:12:07",
-  "operation": "autotag",
+  "last_run": "2026-05-02T17:25:40",
+  "operation": "rescan",
   "sources": {
     "2minute-tabletop": {
       "total": 359,
-      "color_scanned": 0,
-      "color_bw": 0,
-      "color_color": 0,
-      "url_checked": 0,
-      "url_broken": 0,
       "tagged": 359,
+      "color_scanned": 3,
+      "url_checked": 3,
+      "url_broken": 0,
       "with_thumbnail": 359
     },
     "dyson-logos": {
       "total": 650,
-      "color_scanned": 0,
-      "color_bw": 0,
-      "color_color": 0,
-      "url_checked": 0,
-      "url_broken": 0,
       "tagged": 650,
+      "color_scanned": 3,
+      "url_checked": 3,
+      "url_broken": 0,
       "with_thumbnail": 650
     }
+  },
+  "details": {
+    "processed": 3
   }
 }

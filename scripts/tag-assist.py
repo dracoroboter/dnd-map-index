@@ -10,7 +10,7 @@ Usage:
 import json, re, sys, random
 from pathlib import Path
 
-INDEX = Path(__file__).resolve().parent.parent / "index" / "dyson-logos.json"
+INDEX_DIR = Path(__file__).resolve().parent.parent / "index"
 
 ENVIRONMENTS = [
     "dungeon", "cave", "crypt", "sewer", "mine",
@@ -156,10 +156,24 @@ def tag_interactive(maps):
         print()
     return changed
 
+def load_all_indexes():
+    """Load all index files, return list of (maps, path) tuples."""
+    result = []
+    for f in sorted(INDEX_DIR.glob("*.json")):
+        if f.name == "manifest.json":
+            continue
+        result.append((json.loads(f.read_text(encoding="utf-8")), f))
+    return result
+
 def main():
-    if not INDEX.exists():
-        sys.exit(f"Run grab-dyson.py first. Missing: {INDEX}")
-    maps = json.loads(INDEX.read_text(encoding="utf-8"))
+    indexes = load_all_indexes()
+    if not indexes:
+        sys.exit(f"No index files found in {INDEX_DIR}")
+    # flatten all maps with back-reference to their file
+    all_maps = []
+    for maps, path in indexes:
+        for m in maps:
+            all_maps.append((m, maps, path))
 
     pick = 0
     diverse = False
@@ -179,30 +193,23 @@ def main():
             pick = int(sys.argv[idx + 1])
 
     if pick > 0:
-        untagged = [m for m in maps if not m.get("tags")]
+        untagged = [m for m, _, _ in all_maps if not m.get("tags")]
         if diverse:
             subset = pick_diverse(untagged, pick)
         else:
             subset = untagged[:pick]
         print(f"Selected {len(subset)} maps to tag")
-        changed = tag_interactive(subset)
-        # merge back
-        tagged_ids = {m["id"]: m for m in subset}
-        for i, m in enumerate(maps):
-            if m["id"] in tagged_ids:
-                maps[i] = tagged_ids[m["id"]]
+        tag_interactive(subset)
     else:
-        untagged = [m for m in maps if not m.get("tags")]
+        untagged = [m for m, _, _ in all_maps if not m.get("tags")]
         if not untagged:
             print("All maps already tagged!")
             return
-        changed = tag_interactive(untagged)
-        tagged_ids = {m["id"]: m for m in untagged}
-        for i, m in enumerate(maps):
-            if m["id"] in tagged_ids:
-                maps[i] = tagged_ids[m["id"]]
+        tag_interactive(untagged)
 
-    INDEX.write_text(json.dumps(maps, indent=2, ensure_ascii=False), encoding="utf-8")
+    # save all modified files
+    for maps, path in indexes:
+        path.write_text(json.dumps(maps, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Saved {changed} tagged maps → {INDEX}")
 
 if __name__ == "__main__":

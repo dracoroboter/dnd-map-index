@@ -4,31 +4,50 @@
 
 Script per la manutenzione dell'indice. Lavora in batch piccoli per non sovraccaricare i server delle fonti.
 
-## Operazioni
+## Comportamento default (senza flag)
 
-### Rilevamento colore (B&W vs color)
+Processa N mappe (default 5) facendo **tutti i controlli pendenti**:
 
-Scarica la thumbnail di N mappe non ancora scansionate e determina se sono in bianco/nero o a colori analizzando la saturazione dei pixel.
-
-```bash
-python3 scripts/rescan.py              # default: 5 mappe
-python3 scripts/rescan.py --color 20   # 20 mappe
-```
-
-Le mappe vengono scelte casualmente tra quelle non ancora scansionate. Ogni esecuzione avanza il progresso. Il campo `style` viene aggiornato a `bw-ink` o `color`, e `style_scanned` viene impostato a `true`.
-
-### Verifica URL
-
-HEAD request su `source_url` per verificare che le pagine siano ancora raggiungibili. Controlla le mappe con `last_checked` più vecchio.
+1. **Auto-tag** — solo se `tags` è vuoto
+2. **Rilevamento colore** — solo se `style_scanned` è assente
+3. **Verifica URL** — sempre (HEAD request)
 
 ```bash
-python3 scripts/rescan.py --check-urls      # default: 10 mappe
-python3 scripts/rescan.py --check-urls 50   # 50 mappe
+python3 scripts/rescan.py          # 5 mappe
+python3 scripts/rescan.py 20       # 20 mappe
 ```
 
-Se una URL ritorna 404 o timeout, il campo `status` diventa `broken`. Dopo 2 rescan consecutivi `broken`, la mappa va marcata `removed` (manualmente per ora).
+Ogni esecuzione avanza il progresso. Le mappe vengono scelte casualmente per varietà.
 
-### Statistiche
+## Flag singoli (forzano il controllo)
+
+I flag singoli **forzano** il check anche su mappe già processate — utile per riscansionare dopo modifiche.
+
+### `--autotag` — Forza re-tag su tutte le mappe
+
+```bash
+python3 scripts/rescan.py --autotag
+```
+
+Ricalcola tag e environment da `guess_tags(title)` per **tutte** le mappe, sovrascrivendo i tag esistenti.
+
+### `--color N` — Forza rilevamento colore
+
+```bash
+python3 scripts/rescan.py --color 20
+```
+
+Scarica la thumbnail di N mappe (anche già scansionate) e determina B&W vs colore.
+
+### `--check-urls N` — Forza verifica URL
+
+```bash
+python3 scripts/rescan.py --check-urls 50
+```
+
+HEAD request su N mappe (anche già verificate). Se 404/timeout → `status: broken`.
+
+### `--stats` — Statistiche
 
 ```bash
 python3 scripts/rescan.py --stats
@@ -40,28 +59,18 @@ Ogni esecuzione scrive `rescan-status.json` nella root del repo. Formato:
 
 ```json
 {
-  "last_run": "2026-05-02T16:53:12",
-  "operation": "color",
+  "last_run": "2026-05-02T17:25:00",
+  "operation": "rescan",
   "sources": {
     "dyson-logos": {
       "total": 650,
-      "color_scanned": 8,
-      "color_bw": 8,
-      "color_color": 0,
-      "url_checked": 0,
-      "url_broken": 0,
       "tagged": 650,
+      "color_scanned": 3,
+      "url_checked": 3,
+      "url_broken": 0,
       "with_thumbnail": 650
     }
   },
-  "details": {
-    "scanned": 3
-  }
+  "details": { "processed": 5 }
 }
 ```
-
-Campi:
-- `last_run` — timestamp ISO dell'ultima esecuzione
-- `operation` — tipo di operazione (`color`, `check-urls`)
-- `sources.<nome>` — statistiche per fonte
-- `details` — parametri dell'ultima esecuzione
