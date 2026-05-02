@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-03T00:21:12",
-  "total_maps": 1508,
+  "generated": "2026-05-03T00:44:20",
+  "total_maps": 2146,
   "files": [
     {
       "file": "2minute-tabletop.json",
@@ -9,9 +9,21 @@
       "last_updated": "2026-05-03"
     },
     {
+      "file": "dice-grimorium.json",
+      "source_id": "dice-grimorium",
+      "count": 361,
+      "last_updated": "2026-05-03"
+    },
+    {
       "file": "dyson-logos.json",
       "source_id": "dyson-logos",
       "count": 650,
+      "last_updated": "2026-05-03"
+    },
+    {
+      "file": "reddit-curated.json",
+      "source_id": "reddit-curated",
+      "count": 277,
       "last_updated": "2026-05-03"
     },
     {

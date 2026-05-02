@@ -51,7 +51,7 @@ for s in sources.get("sources", []):
          all(k in s for k in ["id", "name", "status", "license", "thumbnail_policy", "download_policy", "indexing_method"]),
          f"missing: {[k for k in ['id','name','status','license','thumbnail_policy','download_policy','indexing_method'] if k not in s]}")
     test(f"source '{sid}' status is valid",
-         s.get("status") in ("active", "planned", "backlog"),
+         s.get("status") in ("active", "planned", "backlog", "experimental"),
          f"got: {s.get('status')}")
 
 # ── 3. Index data validation ─────────────────────────────────────

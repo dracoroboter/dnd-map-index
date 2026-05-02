@@ -1,4 +1,23 @@
 {
+  "policy": {
+    "description": "Rules governing how this project indexes and references external map content.",
+    "rules": [
+      "NO image downloads: grabbers index metadata only (title, author, URL, license). Images are never downloaded or stored in this repo.",
+      "Thumbnail URLs: only link to thumbnails already publicly served by the source. Never download or cache thumbnail images locally.",
+      "Source URLs: link to the original page where the map is published. This is fair use for publicly available content.",
+      "License classification: if a source has an explicit license, use it. If no license is stated, assume 'all-rights-reserved' (commercial, no reuse).",
+      "Download policy 'link_to_source': the webapp/CLI links the user to the original page. The user downloads from the source directly.",
+      "Download policy 'direct': only allowed for sources with an explicit free/open license (e.g. Dyson Logos commercial-free maps)."
+    ],
+    "thumbnail_policy_values": {
+      "remote": "Link to thumbnail URL already served by the source. No local copy.",
+      "local": "DEPRECATED — treat as 'remote'. No thumbnails should be stored locally."
+    },
+    "download_policy_values": {
+      "link_to_source": "Link user to the original page. No direct download.",
+      "direct": "Direct download allowed only if source license explicitly permits it."
+    }
+  },
   "sources": [
     {
       "id": "dyson-logos",
@@ -12,7 +31,7 @@
         "attribution": "Cartography by Dyson Logos",
         "url": "https://dysonlogos.blog/maps/commercial-maps/"
       },
-      "thumbnail_policy": "local",
+      "thumbnail_policy": "remote",
       "download_policy": "direct",
       "indexing_method": "scraper",
       "style": "bw-ink",
@@ -73,10 +92,10 @@
       "id": "dice-grimorium",
       "name": "Dice Grimorium",
       "url": "https://www.dicegrimorium.com",
-      "status": "backlog",
+      "status": "active",
       "license": {
-        "type": "unknown",
-        "name": "Unknown - to verify",
+        "type": "personal-free",
+        "name": "Free for personal use",
         "attribution": "Map by Dice Grimorium",
         "url": "https://www.dicegrimorium.com"
       },
@@ -90,10 +109,10 @@
       "id": "reddit-curated",
       "name": "Reddit r/battlemaps (curated)",
       "url": "https://www.reddit.com/r/battlemaps",
-      "status": "backlog",
+      "status": "experimental",
       "license": {
-        "type": "unknown",
-        "name": "Varies per post",
+        "type": "all-rights-reserved",
+        "name": "Assumed all rights reserved (per-post, no explicit license)",
         "attribution": "See individual posts",
         "url": "https://www.reddit.com/r/battlemaps"
       },
