@@ -207,4 +207,8 @@ Questo progetto fa parte di una famiglia di tool per D&D 5e:
 
 **dracoroboter**
 
-Sono "dracoroboter" in rete dalla fine degli anni '90 del secolo scorso. Faccio il programmatore di lavoro, ho iniziato a fare il master nel 2024 e quindi sono ancora un niubbo. Se volete contattarmi potete usare la mail dracoroboter(at)gmail.com.
+Sono "dracoroboter" in rete dalla fine degli anni '90 del secolo scorso. Faccio il programmatore di lavoro, ho iniziato a fare il master nel 2024 e quindi sono ancora un niubbo.
+
+- 📧 dracoroboter(at)gmail.com
+- 🎲 [dracoroboter.itch.io/dungeon-and-dragons-tools](https://dracoroboter.itch.io/dungeon-and-dragons-tools)
+- 💬 [GitHub Discussions](https://github.com/dracoroboter/dnd-map-index/discussions/1)

@@ -173,4 +173,8 @@ This project is part of a family of D&D 5e tools:
 
 **dracoroboter**
 
-I've been "dracoroboter" online since the late '90s. I'm a programmer by trade, started DMing in 2024, so I'm still very much a noob. You can reach me at dracoroboter(at)gmail.com.
+I've been "dracoroboter" online since the late '90s. I'm a programmer by trade, started DMing in 2024, so I'm still very much a noob.
+
+- 📧 dracoroboter(at)gmail.com
+- 🎲 [dracoroboter.itch.io/dungeon-and-dragons-tools](https://dracoroboter.itch.io/dungeon-and-dragons-tools)
+- 💬 [GitHub Discussions](https://github.com/dracoroboter/dnd-map-index/discussions/1)
